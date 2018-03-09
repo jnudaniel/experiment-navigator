@@ -4,6 +4,7 @@
 # Final project for CS 270 / BMI 210, Winter 2018
 # ----------------------------------------------------------
 
-
+from owlready2 import *
 
 if __name__ == "__main__":
+    print("hello")
