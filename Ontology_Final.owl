@@ -1,0 +1,498 @@
+Prefix(:=<http://www.semanticweb.org/gaby/ontologies/2018/2/210_Final_Project#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/gaby/ontologies/2018/2/210_Final_Project>
+
+Declaration(Class(:Absorbance))
+Declaration(Class(:Affinity))
+Declaration(Class(:Affinity_chromatography))
+Declaration(Class(:Affinity_electrophoresis))
+Declaration(Class(:Amido_Black))
+Declaration(Class(:BCA_Assay))
+Declaration(Class(:Bradford_Assay))
+Declaration(Class(:ChIP_on_chip))
+Declaration(Class(:Charge))
+Declaration(Class(:Chip_sequencing))
+Declaration(Class(:Coimmunoprecipitation))
+Declaration(Class(:Concentration_calculation))
+Declaration(Class(:Gene_Function))
+Declaration(Class(:Hydrophobicity))
+Declaration(Class(:Identification))
+Declaration(Class(:Interaction))
+Declaration(Class(:Kinetics))
+Declaration(Class(:Lowry_Assay))
+Declaration(Class(:Mass_spectometry))
+Declaration(Class(:Max_Conc))
+Declaration(Class(:Max_Freq))
+Declaration(Class(:Max_Values))
+Declaration(Class(:Min_Conc))
+Declaration(Class(:Min_Freq))
+Declaration(Class(:Min_Values))
+Declaration(Class(:Molecular_Biology_Experiment))
+Declaration(Class(:Nonspecific))
+Declaration(Class(:Nucleic_Acid))
+Declaration(Class(:Protein))
+Declaration(Class(:Protein_DNA))
+Declaration(Class(:Protein_Protein))
+Declaration(Class(:Protein_RNA))
+Declaration(Class(:Protein_fragment_complementation_assay))
+Declaration(Class(:Proximity_ligation_assay))
+Declaration(Class(:Purificaiton))
+Declaration(Class(:Purification))
+Declaration(Class(:Size))
+Declaration(Class(:Spec_Values))
+Declaration(Class(:Specific))
+Declaration(Class(:Strategies))
+Declaration(Class(:Structure))
+Declaration(Class(:Synthesis))
+Declaration(Class(:TCP_seq))
+Declaration(Class(:Toeprinting_assat))
+Declaration(Class(:Yield_evaluation))
+Declaration(Class(:naDetection))
+Declaration(Class(:naQuantification))
+Declaration(Class(:pDetection))
+Declaration(Class(:pQuantification))
+Declaration(ObjectProperty(:MaxConc))
+Declaration(ObjectProperty(:MaxFreq))
+Declaration(ObjectProperty(:MaxVal))
+Declaration(ObjectProperty(:MinConc))
+Declaration(ObjectProperty(:MinFreq))
+Declaration(ObjectProperty(:MinVal))
+Declaration(ObjectProperty(:hasVal))
+Declaration(NamedIndividual(:Absorbance))
+Declaration(NamedIndividual(:Affinity_Electrophoresis))
+Declaration(NamedIndividual(:Affnity_chromatography))
+Declaration(NamedIndividual(:Amido_Black))
+Declaration(NamedIndividual(:BCA_Assay))
+Declaration(NamedIndividual(:Bradford_Assay))
+Declaration(NamedIndividual(:ChIP_on_chip))
+Declaration(NamedIndividual(:Chip_sequencing))
+Declaration(NamedIndividual(:Coimmunoprecipitation))
+Declaration(NamedIndividual(:Cryo_electron_microscopy))
+Declaration(NamedIndividual(:ELISA))
+Declaration(NamedIndividual(:Edman_degredation))
+Declaration(NamedIndividual(:Free_flow_electrophoresis))
+Declaration(NamedIndividual(:HPLC))
+Declaration(NamedIndividual(:Hydrophobic_interaction_chromatography))
+Declaration(NamedIndividual(:Immunoaffinity_chromatography))
+Declaration(NamedIndividual(:Ion_exchange_chromatography))
+Declaration(NamedIndividual(:Liquid_Chromatography_Mass_Spectrometry))
+Declaration(NamedIndividual(:Lowry_Assay))
+Declaration(NamedIndividual(:Lyophilization))
+Declaration(NamedIndividual(:Mass_spectometry))
+Declaration(NamedIndividual(:Metal_binding))
+Declaration(NamedIndividual(:NMR_spectroscopy))
+Declaration(NamedIndividual(:Protein_fragment_complementation_assay))
+Declaration(NamedIndividual(:Proteolytic_digest))
+Declaration(NamedIndividual(:Proximity_ligation_assay))
+Declaration(NamedIndividual(:SDS_page))
+Declaration(NamedIndividual(:Size_exclusion_chromatography))
+Declaration(NamedIndividual(:Small_angle_Xray_scattering))
+Declaration(NamedIndividual(:TCP_seq))
+Declaration(NamedIndividual(:Toeprinting_assay))
+Declaration(NamedIndividual(:Ultrafiltration))
+Declaration(NamedIndividual(:Ultraviolet_absorbance))
+Declaration(NamedIndividual(:Western_Blot))
+Declaration(NamedIndividual(:Xray_crystallography))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :MaxConc (:MaxConc)
+
+SubObjectPropertyOf(:MaxConc :MaxVal)
+
+# Object Property: :MaxFreq (:MaxFreq)
+
+SubObjectPropertyOf(:MaxFreq :MaxVal)
+
+# Object Property: :MaxVal (:MaxVal)
+
+SubObjectPropertyOf(:MaxVal :hasVal)
+
+# Object Property: :MinConc (:MinConc)
+
+SubObjectPropertyOf(:MinConc :MinVal)
+
+# Object Property: :MinFreq (:MinFreq)
+
+SubObjectPropertyOf(:MinFreq :MinVal)
+
+# Object Property: :MinVal (:MinVal)
+
+SubObjectPropertyOf(:MinVal :hasVal)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Absorbance (:Absorbance)
+
+AnnotationAssertion(rdfs:comment :Absorbance "Range: 100 µg/ml to 1 mg/ml. Can be inaccurate.")
+SubClassOf(:Absorbance :Nonspecific)
+
+# Class: :Affinity (:Affinity)
+
+SubClassOf(:Affinity :Strategies)
+
+# Class: :Affinity_chromatography (:Affinity_chromatography)
+
+SubClassOf(:Affinity_chromatography :Protein_Protein)
+
+# Class: :Affinity_electrophoresis (:Affinity_electrophoresis)
+
+SubClassOf(:Affinity_electrophoresis :Protein_Protein)
+
+# Class: :Amido_Black (:Amido_Black)
+
+AnnotationAssertion(rdfs:comment :Amido_Black "Range: 1-12 μg/mL")
+SubClassOf(:Amido_Black :Nonspecific)
+
+# Class: :BCA_Assay (:BCA_Assay)
+
+AnnotationAssertion(rdfs:comment :BCA_Assay "Range: 0.5 µg/ml")
+SubClassOf(:BCA_Assay :Nonspecific)
+
+# Class: :Bradford_Assay (:Bradford_Assay)
+
+AnnotationAssertion(rdfs:comment :Bradford_Assay "Can be used to evaluate the yeild of multistep protein purification")
+AnnotationAssertion(rdfs:comment :Bradford_Assay "Range: 1 mg/ml")
+SubClassOf(:Bradford_Assay :Nonspecific)
+SubClassOf(:Bradford_Assay ObjectExactCardinality(1000 :MinConc))
+
+# Class: :ChIP_on_chip (:ChIP_on_chip)
+
+SubClassOf(:ChIP_on_chip :Protein_DNA)
+
+# Class: :Charge (:Charge)
+
+SubClassOf(:Charge :Strategies)
+
+# Class: :Chip_sequencing (:Chip_sequencing)
+
+SubClassOf(:Chip_sequencing :Protein_DNA)
+
+# Class: :Coimmunoprecipitation (:Coimmunoprecipitation)
+
+AnnotationAssertion(rdfs:comment :Coimmunoprecipitation "\"Perhaps the simplest method for identifying proteins that bind to one another tightly is co-immunoprecipitation. In this case, an antibody is used to recognize a specific target protein; affinity reagents that bind to the antibody and are coupled to a solid matrix are then used to drag the complex out of solution to the bottom of a test tube. If this protein is associated tightly enough with another protein when it is captured by the antibody, the partner precipitates as well. This method is useful for identifying proteins that are part of a complex inside cells, including those that interact only transiently—for example when cells are stimulated by signal molecules (discussed in Chapter 15).\"")
+SubClassOf(:Coimmunoprecipitation :Protein_Protein)
+
+# Class: :Concentration_calculation (:Concentration_calculation)
+
+SubClassOf(:Concentration_calculation :Purification)
+
+# Class: :Gene_Function (:Gene_Function)
+
+SubClassOf(:Gene_Function :Nucleic_Acid)
+
+# Class: :Hydrophobicity (:Hydrophobicity)
+
+SubClassOf(:Hydrophobicity :Strategies)
+
+# Class: :Identification (:Identification)
+
+AnnotationAssertion(rdfs:comment :Identification "//maybe better class name would just be sequencing")
+SubClassOf(:Identification :Protein)
+
+# Class: :Interaction (:Interaction)
+
+SubClassOf(:Interaction :Protein)
+
+# Class: :Kinetics (:Kinetics)
+
+SubClassOf(:Kinetics :Nucleic_Acid)
+
+# Class: :Lowry_Assay (:Lowry_Assay)
+
+AnnotationAssertion(rdfs:comment :Lowry_Assay "Range: 0.01-1.0 mg/mL")
+SubClassOf(:Lowry_Assay :Nonspecific)
+SubClassOf(:Lowry_Assay ObjectExactCardinality(10 :MinConc))
+
+# Class: :Mass_spectometry (:Mass_spectometry)
+
+SubClassOf(:Mass_spectometry :Protein_Protein)
+
+# Class: :Max_Conc (:Max_Conc)
+
+SubClassOf(:Max_Conc :Max_Values)
+DisjointClasses(:Max_Conc :Max_Freq)
+
+# Class: :Max_Freq (:Max_Freq)
+
+SubClassOf(:Max_Freq :Max_Values)
+
+# Class: :Max_Values (:Max_Values)
+
+SubClassOf(:Max_Values :Spec_Values)
+
+# Class: :Min_Conc (:Min_Conc)
+
+SubClassOf(:Min_Conc :Min_Values)
+DisjointClasses(:Min_Conc :Min_Freq)
+
+# Class: :Min_Freq (:Min_Freq)
+
+SubClassOf(:Min_Freq :Min_Values)
+
+# Class: :Min_Values (:Min_Values)
+
+SubClassOf(:Min_Values :Spec_Values)
+
+# Class: :Nonspecific (:Nonspecific)
+
+SubClassOf(:Nonspecific :pDetection)
+
+# Class: :Nucleic_Acid (:Nucleic_Acid)
+
+AnnotationAssertion(rdfs:comment :Nucleic_Acid "assume these methods are applicable to both DNA and RNA unless specified in attributes of specific method")
+SubClassOf(:Nucleic_Acid :Molecular_Biology_Experiment)
+
+# Class: :Protein (:Protein)
+
+SubClassOf(:Protein :Molecular_Biology_Experiment)
+
+# Class: :Protein_DNA (:Protein_DNA)
+
+SubClassOf(:Protein_DNA :Interaction)
+
+# Class: :Protein_Protein (:Protein_Protein)
+
+SubClassOf(:Protein_Protein :Interaction)
+
+# Class: :Protein_RNA (:Protein_RNA)
+
+SubClassOf(:Protein_RNA :Interaction)
+
+# Class: :Protein_fragment_complementation_assay (:Protein_fragment_complementation_assay)
+
+SubClassOf(:Protein_fragment_complementation_assay :Protein_Protein)
+
+# Class: :Proximity_ligation_assay (:Proximity_ligation_assay)
+
+SubClassOf(:Proximity_ligation_assay :Protein_Protein)
+
+# Class: :Purificaiton (:Purificaiton)
+
+SubClassOf(:Purificaiton :Nucleic_Acid)
+
+# Class: :Purification (:Purification)
+
+AnnotationAssertion(rdfs:comment :Purification "In practice, involves 1 method from Strategies, 1 method from Concentration_calculation, and 1 method from Yield_evaluation")
+SubClassOf(:Purification :Protein)
+
+# Class: :Size (:Size)
+
+SubClassOf(:Size :Strategies)
+
+# Class: :Specific (:Specific)
+
+SubClassOf(:Specific :pDetection)
+
+# Class: :Strategies (:Strategies)
+
+SubClassOf(:Strategies :Purification)
+
+# Class: :Structure (:Structure)
+
+SubClassOf(:Structure :Protein)
+
+# Class: :Synthesis (:Synthesis)
+
+SubClassOf(:Synthesis :Nucleic_Acid)
+
+# Class: :TCP_seq (:TCP_seq)
+
+SubClassOf(:TCP_seq :Protein_RNA)
+
+# Class: :Toeprinting_assat (:Toeprinting_assat)
+
+SubClassOf(:Toeprinting_assat :Protein_RNA)
+
+# Class: :Yield_evaluation (:Yield_evaluation)
+
+SubClassOf(:Yield_evaluation :Purification)
+
+# Class: :naDetection (:naDetection)
+
+SubClassOf(:naDetection :Nucleic_Acid)
+
+# Class: :naQuantification (:naQuantification)
+
+SubClassOf(:naQuantification :Nucleic_Acid)
+
+# Class: :pDetection (:pDetection)
+
+SubClassOf(:pDetection :Protein)
+
+# Class: :pQuantification (:pQuantification)
+
+SubClassOf(:pQuantification :Protein)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Absorbance (:Absorbance)
+
+ClassAssertion(:Nonspecific :Absorbance)
+
+# Individual: :Affinity_Electrophoresis (:Affinity_Electrophoresis)
+
+AnnotationAssertion(rdfs:comment :Affinity_Electrophoresis "Range: 1mg/ml")
+ClassAssertion(:Protein_Protein :Affinity_Electrophoresis)
+
+# Individual: :Affnity_chromatography (:Affnity_chromatography)
+
+ClassAssertion(:Identification :Affnity_chromatography)
+ClassAssertion(:Protein_Protein :Affnity_chromatography)
+
+# Individual: :Amido_Black (:Amido_Black)
+
+ClassAssertion(:Nonspecific :Amido_Black)
+
+# Individual: :BCA_Assay (:BCA_Assay)
+
+ClassAssertion(:Nonspecific :BCA_Assay)
+ClassAssertion(:pQuantification :BCA_Assay)
+
+# Individual: :Bradford_Assay (:Bradford_Assay)
+
+ClassAssertion(:Nonspecific :Bradford_Assay)
+ClassAssertion(:Yield_evaluation :Bradford_Assay)
+ClassAssertion(:pQuantification :Bradford_Assay)
+
+# Individual: :ChIP_on_chip (:ChIP_on_chip)
+
+ClassAssertion(:Protein_DNA :ChIP_on_chip)
+
+# Individual: :Chip_sequencing (:Chip_sequencing)
+
+ClassAssertion(:Protein_DNA :Chip_sequencing)
+
+# Individual: :Coimmunoprecipitation (:Coimmunoprecipitation)
+
+ClassAssertion(:Protein_Protein :Coimmunoprecipitation)
+
+# Individual: :Cryo_electron_microscopy (:Cryo_electron_microscopy)
+
+ClassAssertion(:Structure :Cryo_electron_microscopy)
+
+# Individual: :ELISA (:ELISA)
+
+ClassAssertion(:Specific :ELISA)
+ClassAssertion(:Yield_evaluation :ELISA)
+
+# Individual: :Edman_degredation (:Edman_degredation)
+
+ClassAssertion(:Identification :Edman_degredation)
+
+# Individual: :Free_flow_electrophoresis (:Free_flow_electrophoresis)
+
+ClassAssertion(:Charge :Free_flow_electrophoresis)
+
+# Individual: :HPLC (:HPLC)
+
+ClassAssertion(:Hydrophobicity :HPLC)
+ClassAssertion(:Specific :HPLC)
+
+# Individual: :Hydrophobic_interaction_chromatography (:Hydrophobic_interaction_chromatography)
+
+ClassAssertion(:Hydrophobicity :Hydrophobic_interaction_chromatography)
+
+# Individual: :Immunoaffinity_chromatography (:Immunoaffinity_chromatography)
+
+ClassAssertion(:Affinity :Immunoaffinity_chromatography)
+
+# Individual: :Ion_exchange_chromatography (:Ion_exchange_chromatography)
+
+ClassAssertion(:Charge :Ion_exchange_chromatography)
+
+# Individual: :Liquid_Chromatography_Mass_Spectrometry (:Liquid_Chromatography_Mass_Spectrometry)
+
+AnnotationAssertion(rdfs:comment :Liquid_Chromatography_Mass_Spectrometry "Can detect proteins at low concentrations (ng/mL to pg/mL) in blood and body fluids")
+ClassAssertion(:Identification :Liquid_Chromatography_Mass_Spectrometry)
+ClassAssertion(:Specific :Liquid_Chromatography_Mass_Spectrometry)
+
+# Individual: :Lowry_Assay (:Lowry_Assay)
+
+ClassAssertion(:Nonspecific :Lowry_Assay)
+ClassAssertion(:pQuantification :Lowry_Assay)
+
+# Individual: :Lyophilization (:Lyophilization)
+
+ClassAssertion(:Concentration_calculation :Lyophilization)
+
+# Individual: :Mass_spectometry (:Mass_spectometry)
+
+ClassAssertion(:Identification :Mass_spectometry)
+ClassAssertion(:Protein_Protein :Mass_spectometry)
+
+# Individual: :Metal_binding (:Metal_binding)
+
+ClassAssertion(:Affinity :Metal_binding)
+
+# Individual: :NMR_spectroscopy (:NMR_spectroscopy)
+
+ClassAssertion(:Structure :NMR_spectroscopy)
+
+# Individual: :Protein_fragment_complementation_assay (:Protein_fragment_complementation_assay)
+
+ClassAssertion(:Protein_Protein :Protein_fragment_complementation_assay)
+
+# Individual: :Proteolytic_digest (:Proteolytic_digest)
+
+ClassAssertion(:Identification :Proteolytic_digest)
+
+# Individual: :Proximity_ligation_assay (:Proximity_ligation_assay)
+
+ClassAssertion(:Protein_Protein :Proximity_ligation_assay)
+
+# Individual: :SDS_page (:SDS_page)
+
+ClassAssertion(:Yield_evaluation :SDS_page)
+
+# Individual: :Size_exclusion_chromatography (:Size_exclusion_chromatography)
+
+ClassAssertion(:Size :Size_exclusion_chromatography)
+
+# Individual: :Small_angle_Xray_scattering (:Small_angle_Xray_scattering)
+
+ClassAssertion(:Structure :Small_angle_Xray_scattering)
+
+# Individual: :TCP_seq (:TCP_seq)
+
+ClassAssertion(:Protein_RNA :TCP_seq)
+
+# Individual: :Toeprinting_assay (:Toeprinting_assay)
+
+ClassAssertion(:Protein_RNA :Toeprinting_assay)
+
+# Individual: :Ultrafiltration (:Ultrafiltration)
+
+ClassAssertion(:Concentration_calculation :Ultrafiltration)
+
+# Individual: :Ultraviolet_absorbance (:Ultraviolet_absorbance)
+
+ClassAssertion(:pQuantification :Ultraviolet_absorbance)
+
+# Individual: :Western_Blot (:Western_Blot)
+
+AnnotationAssertion(rdfs:comment :Western_Blot "Range: 1-12 μg/mL")
+ClassAssertion(:Specific :Western_Blot)
+ClassAssertion(:Yield_evaluation :Western_Blot)
+
+# Individual: :Xray_crystallography (:Xray_crystallography)
+
+ClassAssertion(:Structure :Xray_crystallography)
+
+
+)
