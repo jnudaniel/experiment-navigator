@@ -9,15 +9,21 @@ onto = get_ontology("file://pizza.owl").load()
 
 if __name__ == "__main__":
     print("hello")
-    # acetaminophen   = ActivePrinciple("acetaminophen")
-    my_pizza = onto.Pizza("pizza1")
-    garlic = onto.GarlicTopping()
+    my_pizza = onto.NamedPizza()
     mozz = onto.MozzarellaTopping()
-    redon = onto.RedOnionTopping()
 
-    my_pizza.hasTopping = [garlic, mozz, redon]
+    #my_pizza.hasTopping = [mozz, onto.TomatoTopping()]
+    my_pizza.hasTopping.only([mozz, onto.TomatoTopping()])
+    print("should print:")
+    print(my_pizza)
     print(my_pizza.hasTopping)
+    print("Should have printed")
+
+    list(onto.classes())
+
+    #close_world(my_pizza)
 
     sync_reasoner()
 
+    print("done. class is:")
     print(my_pizza.__class__)
