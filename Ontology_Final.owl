@@ -29,10 +29,10 @@ Declaration(Class(:Lowry_Assay))
 Declaration(Class(:Mass_spectometry))
 Declaration(Class(:Max_Conc))
 Declaration(Class(:Max_Freq))
-Declaration(Class(:Max_Values))
+Declaration(Class(:Max_Value))
 Declaration(Class(:Min_Conc))
 Declaration(Class(:Min_Freq))
-Declaration(Class(:Min_Values))
+Declaration(Class(:Min_Value))
 Declaration(Class(:Molecular_Biology_Experiment))
 Declaration(Class(:Nonspecific))
 Declaration(Class(:Nucleic_Acid))
@@ -45,25 +45,32 @@ Declaration(Class(:Proximity_ligation_assay))
 Declaration(Class(:Purificaiton))
 Declaration(Class(:Purification))
 Declaration(Class(:Size))
-Declaration(Class(:Spec_Values))
+Declaration(Class(:Spec_Charge))
+Declaration(Class(:Spec_Concentration))
+Declaration(Class(:Spec_Frequency))
+Declaration(Class(:Spec_Intensity))
+Declaration(Class(:Spec_Length))
+Declaration(Class(:Spec_Mass))
+Declaration(Class(:Spec_Temperature))
+Declaration(Class(:Spec_Time))
+Declaration(Class(:Spec_Units))
+Declaration(Class(:Spec_Value))
+Declaration(Class(:Spec_Volume))
+Declaration(Class(:Spec_Wavelength))
 Declaration(Class(:Specific))
 Declaration(Class(:Strategies))
 Declaration(Class(:Structure))
 Declaration(Class(:Synthesis))
 Declaration(Class(:TCP_seq))
-Declaration(Class(:Toeprinting_assat))
+Declaration(Class(:Toeprinting_assay))
 Declaration(Class(:Yield_evaluation))
 Declaration(Class(:naDetection))
 Declaration(Class(:naQuantification))
 Declaration(Class(:pDetection))
 Declaration(Class(:pQuantification))
-Declaration(ObjectProperty(:MaxConc))
-Declaration(ObjectProperty(:MaxFreq))
-Declaration(ObjectProperty(:MaxVal))
-Declaration(ObjectProperty(:MinConc))
-Declaration(ObjectProperty(:MinFreq))
-Declaration(ObjectProperty(:MinVal))
-Declaration(ObjectProperty(:hasVal))
+Declaration(ObjectProperty(:hasPurpose))
+Declaration(ObjectProperty(:hasSpec))
+Declaration(ObjectProperty(:hasValue))
 Declaration(NamedIndividual(:Absorbance))
 Declaration(NamedIndividual(:Affinity_Electrophoresis))
 Declaration(NamedIndividual(:Affnity_chromatography))
@@ -99,34 +106,6 @@ Declaration(NamedIndividual(:Ultrafiltration))
 Declaration(NamedIndividual(:Ultraviolet_absorbance))
 Declaration(NamedIndividual(:Western_Blot))
 Declaration(NamedIndividual(:Xray_crystallography))
-
-############################
-#   Object Properties
-############################
-
-# Object Property: :MaxConc (:MaxConc)
-
-SubObjectPropertyOf(:MaxConc :MaxVal)
-
-# Object Property: :MaxFreq (:MaxFreq)
-
-SubObjectPropertyOf(:MaxFreq :MaxVal)
-
-# Object Property: :MaxVal (:MaxVal)
-
-SubObjectPropertyOf(:MaxVal :hasVal)
-
-# Object Property: :MinConc (:MinConc)
-
-SubObjectPropertyOf(:MinConc :MinVal)
-
-# Object Property: :MinFreq (:MinFreq)
-
-SubObjectPropertyOf(:MinFreq :MinVal)
-
-# Object Property: :MinVal (:MinVal)
-
-SubObjectPropertyOf(:MinVal :hasVal)
 
 
 
@@ -166,7 +145,6 @@ SubClassOf(:BCA_Assay :Nonspecific)
 AnnotationAssertion(rdfs:comment :Bradford_Assay "Can be used to evaluate the yeild of multistep protein purification")
 AnnotationAssertion(rdfs:comment :Bradford_Assay "Range: 1 mg/ml")
 SubClassOf(:Bradford_Assay :Nonspecific)
-SubClassOf(:Bradford_Assay ObjectExactCardinality(1000 :MinConc))
 
 # Class: :ChIP_on_chip (:ChIP_on_chip)
 
@@ -214,7 +192,6 @@ SubClassOf(:Kinetics :Nucleic_Acid)
 
 AnnotationAssertion(rdfs:comment :Lowry_Assay "Range: 0.01-1.0 mg/mL")
 SubClassOf(:Lowry_Assay :Nonspecific)
-SubClassOf(:Lowry_Assay ObjectExactCardinality(10 :MinConc))
 
 # Class: :Mass_spectometry (:Mass_spectometry)
 
@@ -222,33 +199,34 @@ SubClassOf(:Mass_spectometry :Protein_Protein)
 
 # Class: :Max_Conc (:Max_Conc)
 
-SubClassOf(:Max_Conc :Max_Values)
+SubClassOf(:Max_Conc :Max_Value)
 DisjointClasses(:Max_Conc :Max_Freq)
 
 # Class: :Max_Freq (:Max_Freq)
 
-SubClassOf(:Max_Freq :Max_Values)
+SubClassOf(:Max_Freq :Max_Value)
 
-# Class: :Max_Values (:Max_Values)
+# Class: :Max_Value (:Max_Value)
 
-SubClassOf(:Max_Values :Spec_Values)
+SubClassOf(:Max_Value :Spec_Value)
 
 # Class: :Min_Conc (:Min_Conc)
 
-SubClassOf(:Min_Conc :Min_Values)
+SubClassOf(:Min_Conc :Min_Value)
 DisjointClasses(:Min_Conc :Min_Freq)
 
 # Class: :Min_Freq (:Min_Freq)
 
-SubClassOf(:Min_Freq :Min_Values)
+SubClassOf(:Min_Freq :Min_Value)
 
-# Class: :Min_Values (:Min_Values)
+# Class: :Min_Value (:Min_Value)
 
-SubClassOf(:Min_Values :Spec_Values)
+SubClassOf(:Min_Value :Spec_Value)
 
 # Class: :Nonspecific (:Nonspecific)
 
 SubClassOf(:Nonspecific :pDetection)
+SubClassOf(:Nonspecific ObjectSomeValuesFrom(:hasSpec :Spec_Value))
 
 # Class: :Nucleic_Acid (:Nucleic_Acid)
 
@@ -292,6 +270,58 @@ SubClassOf(:Purification :Protein)
 
 SubClassOf(:Size :Strategies)
 
+# Class: :Spec_Charge (:Spec_Charge)
+
+AnnotationAssertion(rdfs:comment :Spec_Charge "units: Coulomb")
+SubClassOf(:Spec_Charge :Spec_Units)
+
+# Class: :Spec_Concentration (:Spec_Concentration)
+
+AnnotationAssertion(rdfs:comment :Spec_Concentration "units: gram/liter")
+SubClassOf(:Spec_Concentration :Spec_Units)
+
+# Class: :Spec_Frequency (:Spec_Frequency)
+
+AnnotationAssertion(rdfs:comment :Spec_Frequency "units: hertz")
+SubClassOf(:Spec_Frequency :Spec_Units)
+
+# Class: :Spec_Intensity (:Spec_Intensity)
+
+SubClassOf(:Spec_Intensity :Spec_Units)
+
+# Class: :Spec_Length (:Spec_Length)
+
+AnnotationAssertion(rdfs:comment :Spec_Length "units: meter")
+SubClassOf(:Spec_Length :Spec_Units)
+
+# Class: :Spec_Mass (:Spec_Mass)
+
+AnnotationAssertion(rdfs:comment :Spec_Mass "units: gram")
+SubClassOf(:Spec_Mass :Spec_Units)
+
+# Class: :Spec_Temperature (:Spec_Temperature)
+
+AnnotationAssertion(rdfs:comment :Spec_Temperature "units: kelvin")
+SubClassOf(:Spec_Temperature :Spec_Units)
+
+# Class: :Spec_Time (:Spec_Time)
+
+AnnotationAssertion(rdfs:comment :Spec_Time "units: second")
+SubClassOf(:Spec_Time :Spec_Units)
+
+# Class: :Spec_Value (:Spec_Value)
+
+SubClassOf(:Spec_Value ObjectUnionOf(:Max_Value ObjectSomeValuesFrom(:hasValue :Min_Value)))
+
+# Class: :Spec_Volume (:Spec_Volume)
+
+AnnotationAssertion(rdfs:comment :Spec_Volume "units: liter")
+SubClassOf(:Spec_Volume :Spec_Units)
+
+# Class: :Spec_Wavelength (:Spec_Wavelength)
+
+SubClassOf(:Spec_Wavelength :Spec_Units)
+
 # Class: :Specific (:Specific)
 
 SubClassOf(:Specific :pDetection)
@@ -312,9 +342,9 @@ SubClassOf(:Synthesis :Nucleic_Acid)
 
 SubClassOf(:TCP_seq :Protein_RNA)
 
-# Class: :Toeprinting_assat (:Toeprinting_assat)
+# Class: :Toeprinting_assay (:Toeprinting_assay)
 
-SubClassOf(:Toeprinting_assat :Protein_RNA)
+SubClassOf(:Toeprinting_assay :Protein_RNA)
 
 # Class: :Yield_evaluation (:Yield_evaluation)
 
