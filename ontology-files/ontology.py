@@ -1,9 +1,19 @@
 # BMI 210/CS 270 Final Project
 # Team: Gaby Steiner, Akhila Monturu, Julia Daniel, Eric Cramer
-# Ontology files for Python-UML
+# Ontology files for Python (UML style ontology)
+
 # The following file contains:
-# 	1. Class definitions for the ontology
-# 	2. 
+# 	1. Class definition for an ontology
+# 	2. Class definitions for the ontology
+# 	3. Function to build the ontology to be traversed
+
+#######################################################################################################
+
+""" Class definition for an ontology object """
+class ontology():
+
+	def __init__(self, root):
+		self.root = root
 
 ########################################################################################################
 # Define the top level of the ontology 
@@ -91,11 +101,16 @@ class ProteinDetectionExperiment(ProteinExperiment):
 """ A 4th level class to define the type of protein location experiment """
 class StaticProteinLocationExperiment(ProteinLocationExperiment):
 	
-	def __init__(self, name = "StaticProteinLocationExperiment", subtypes = [])
+	def __init__(self, name = "StaticProteinLocationExperiment", subtypes = []):
+		self.name = name
+		self.subtypes = subtypes
 
 """ A 4th level class to define the type of protein location experiment """
 class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
-	pass
+	
+	def __init__(self, name = "DynamicProteinLocatinExperiment", subtypes = []):
+		self.name = name
+		self.subtypes = subtypes
 
 #####################################################################################################
 ##### Define 5th level experiments #####
@@ -109,4 +124,8 @@ class XRayCrystalography(ProteinStructureExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+######################################################################################################
 
+""" Function to build a ontology object """
+def build_ontology():
+	pass
