@@ -12,8 +12,8 @@ if __name__ == "__main__":
     my_pizza = onto.NamedPizza()
     mozz = onto.MozzarellaTopping()
 
-    #my_pizza.hasTopping = [mozz, onto.TomatoTopping()]
-    my_pizza.hasTopping.only([mozz, onto.TomatoTopping()])
+    my_pizza.hasTopping = [mozz, onto.TomatoTopping()]
+    #my_pizza.hasTopping.only([mozz, onto.TomatoTopping()])
     print("should print:")
     print(my_pizza)
     print(my_pizza.hasTopping)
