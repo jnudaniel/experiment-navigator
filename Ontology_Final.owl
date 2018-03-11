@@ -145,6 +145,7 @@ SubClassOf(:BCA_Assay :Nonspecific)
 AnnotationAssertion(rdfs:comment :Bradford_Assay "Can be used to evaluate the yeild of multistep protein purification")
 AnnotationAssertion(rdfs:comment :Bradford_Assay "Range: 1 mg/ml")
 SubClassOf(:Bradford_Assay :Nonspecific)
+SubClassOf(:Bradford_Assay ObjectSomeValuesFrom(:hasSpec :Max_Conc))
 
 # Class: :ChIP_on_chip (:ChIP_on_chip)
 
