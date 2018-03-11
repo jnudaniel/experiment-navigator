@@ -48,7 +48,7 @@ class GeneExperiment(Experiment):
 """ A 2nd level class to define a protein based experiment """
 class ProteinExperiment(Experiment):
 
-	def __init__(self, name = "ProteinExperiment", subtypes = ["ProteinLocationExperiment", "ProteinStructureExperiment", "ProteinInteractionExperiment", "ProteinQuantificationExperiment", "ProteinDetectionExperiment"]):
+	def __init__(self, name = "ProteinExperiment", subtypes = ["ProteinLocationExperiment", "ProteinStructureExperiment", "ProteinInteractionExperiment", "ProteinQuantificationExperiment", "ProteinDetectionExperiment"], description=""):
 		self.name = name
 
 """ A 2nd level class to define a DNA based experiment """
@@ -76,7 +76,7 @@ class ProteinLocationExperiment(ProteinExperiment):
 """" A 3rd level class to define finding the structure of a protein """
 class ProteinStructureExperiment(ProteinExperiment):
 	
-	def __init__(self, name = "ProteinStructureExperiment", subtypes = ["XRayCrystalography"], experiment_type = "ProteinExperiment"):
+	def __init__(self, name = "ProteinStructureExperiment", subtypes = ["XRayCrystalography"], experiment_type = "ProteinExperiment", description=""):
 		self.name = name
 		self.subtypes = subtypes
 
@@ -144,7 +144,7 @@ def build_ontology():
 	PSE = ProteinStructureExperiment(subtypes = [XrayCrystal], description = "Experiment to determine a protein's structure.")
 
 	# declaring experiment sub-types
-	GE = GeneExperiment(subtypes = [], description = "Experiment that revolves around jeans")
+	GE = GeneExperiment()#subtypes = [])#, description = "Experiment that revolves around jeans")
 	PE = ProteinExperiment(subtypes = [PSE], description = "Experiment that revolves around proteins.")
 	
 	# adding experiment types to experiment
