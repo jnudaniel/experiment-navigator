@@ -18,6 +18,9 @@ class ontology():
 	def add_objects(self, objects):
 		self.objects = objects
 
+	def set_substances(self, substances):
+		self.substances = substances
+
 ########################################################################################################
 # Define the top level of the ontology 
 
@@ -73,7 +76,7 @@ class ProteinLocationExperiment(ProteinExperiment):
 """" A 3rd level class to define finding the structure of a protein """
 class ProteinStructureExperiment(ProteinExperiment):
 	
-	def __init__(self, name = "ProteinStructureExperiment", subtypes = ["XRayCrystalography"]):
+	def __init__(self, name = "ProteinStructureExperiment", subtypes = ["XRayCrystalography"], experiment_type = "ProteinExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 
@@ -132,7 +135,20 @@ class XRayCrystalography(ProteinStructureExperiment):
 """ Function to build a ontology object """
 def build_ontology():
 	onto = ontology()
+	onto.set_substances(["protein", "gene", "dna", "rna", "guacamole"])
 
-	# init classes
+	# init classes in reverse order, starting from the leaves
+
+	# adding protein structure objects
+	XrayCrystal = XRayCrystalography("https://en.wikibooks.org/wiki/Structural_Biochemistry/Proteins/X-ray_Crystallography")
+	PSE = ProteinStructureExperiment(subtypes = [XrayCrystal], description = "Experiment to determine a protein's structure.")
+
+	# declaring experiment sub-types
+	GE = GeneExperiment(subtypes = [], description = "Experiment that revolves around jeans")
+	PE = ProteinExperiment(subtypes = [PSE], description = "Experiment that revolves around proteins.")
 	
+	# adding experiment types to experiment
+
+	E = Experiment(subtypes = [PE], description = "Science! http://i0.kym-cdn.com/photos/images/facebook/000/752/867/644.jpg")
+	onto.add_objects(E)
 	return onto
