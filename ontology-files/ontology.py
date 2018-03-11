@@ -12,8 +12,11 @@
 """ Class definition for an ontology object """
 class ontology():
 
-	def __init__(self, root):
-		self.root = root
+	def __init__(self):
+		pass
+
+	def add_objects(self, objects):
+		self.objects = objects
 
 ########################################################################################################
 # Define the top level of the ontology 
@@ -128,4 +131,8 @@ class XRayCrystalography(ProteinStructureExperiment):
 
 """ Function to build a ontology object """
 def build_ontology():
-	pass
+	onto = ontology()
+
+	# init classes
+	
+	return onto
