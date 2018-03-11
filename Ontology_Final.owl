@@ -226,7 +226,7 @@ SubClassOf(:Min_Value :Spec_Value)
 # Class: :Nonspecific (:Nonspecific)
 
 SubClassOf(:Nonspecific :pDetection)
-SubClassOf(:Nonspecific ObjectSomeValuesFrom(:hasSpec :Spec_Value))
+SubClassOf(:Nonspecific ObjectSomeValuesFrom(:hasSpec :Min_Conc))
 
 # Class: :Nucleic_Acid (:Nucleic_Acid)
 
