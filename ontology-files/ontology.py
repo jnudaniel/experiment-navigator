@@ -388,8 +388,8 @@ def build_ontology(onto_name = "default_ontology"):
 	# init classes in reverse order, starting from the leaves
 
 	# adding protein structure objects
-	XrayCrystal = XRayCrystalography("https://en.wikibooks.org/wiki/Structural_Biochemistry/Proteins/X-ray_Crystallography")
-	PSE = ProteinStructureExperiment(subtypes = [XrayCrystal], description = "Experiment to determine a protein's structure.")
+	XrayCrystal = XRayCrystalography()
+	PSE = ProteinStructureExperiment(subtypes = [XrayCrystal])
 
 	# adding protein detection objects
 	absorbance = Absorbance()
@@ -397,17 +397,17 @@ def build_ontology(onto_name = "default_ontology"):
 	bca_assay = BCAAssay()
 	bradford_assay = BradfordAssay()
 	lowry_assay = LowryAssay()
-	NPDE = NonspecificProteinDetectionExperiment(subtypes = [absorbance, amido_black, bca_assay, bradford_assay, lowry_assay], description = "Nonspecific ways of detecting a protein.")
+	NPDE = NonspecificProteinDetectionExperiment(subtypes = [absorbance, amido_black, bca_assay, bradford_assay, lowry_assay])
 	elisa = ELISA()
 	hplc = HPLC()
 	lcms = LCMS()
 	western_blot = WesternBlot()
-	SPDE = SpecificProteinDetectionExperiment(subtypes = [elisa, hplc, lcms, western_blot], description = "Specific protein assays and detection.")
-	PDE = ProteinDetectionExperiment(subtypes = [NPDE, SPDE], description = "experiemnts to detect proteins")
+	SPDE = SpecificProteinDetectionExperiment(subtypes = [elisa, hplc, lcms, western_blot])
+	PDE = ProteinDetectionExperiment(subtypes = [NPDE, SPDE])
 
 	# adding protein quantification objects
 	uv_absorbance = UVAbsorbance()
-	PQE = ProteinQuantificationExperiment(subtypes = [uv_absorbance, bca_assay, bradford_assay, lowry_assay], description = "Experiments to quantify protein amounts.")
+	PQE = ProteinQuantificationExperiment(subtypes = [uv_absorbance, bca_assay, bradford_assay, lowry_assay])
 
 	# adding protein interaction objects
 	chip_on_chip = ChIPonChip()
@@ -432,10 +432,10 @@ def build_ontology(onto_name = "default_ontology"):
 
 	# declaring experiment sub-types
 	GE = GeneExperiment()#subtypes = [])#, description = "Experiment that revolves around jeans")
-	PE = ProteinExperiment(subtypes = [PSE, PDE, PQE, PIE, PLE], description = "Experiment that revolves around proteins.")
+	PE = ProteinExperiment(subtypes = [PSE, PDE, PQE, PIE, PLE])
 	
 	# adding experiment types to experiment
 
-	E = Experiment(subtypes = [PE], description = "Science! http://i0.kym-cdn.com/photos/images/facebook/000/752/867/644.jpg")
+	E = Experiment(subtypes = [PE])
 	onto.add_objects(E)
 	return onto
