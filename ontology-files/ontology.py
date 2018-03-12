@@ -223,7 +223,7 @@ class XRayCrystalography(ProteinStructureExperiment):
 class Absorbance(NonspecificProteinDetectionExperiment):
 
 	def __init__(self, name = "Absorbance", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
-		self.name = name
+		self.nai tme = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type

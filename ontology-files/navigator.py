@@ -11,7 +11,7 @@ if __name__ == "__main__":
 	print("* ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *")
 	print("Welcome to the Experiment Navigator!")
 	print("Loading our cutting-edge experiment ontology...")
-	# ont = o.build_ontology()
+	ont = o.build_ontology()
 	print("...done!")
 	print("The Experiment Navigator is your tool to help find the right experiment for you, given a hypothesis you'd like to test.")
 	print("Please enter your hypothesis here, in your own words:")
@@ -32,10 +32,10 @@ if __name__ == "__main__":
 		elif typeprotein.lower() == "interaction":
 			typeinteraction = input("What type of molecule is the protein interacting with? DNA, RNA, or another protein? ")
 			if typeinteraction.lower() == "dna":
-				typeproDNA = input("Are you doing chip on chip or chip sequencing? ")
-				if typeproDNA.lower() == "chip on chip":
+				typeproDNA = input("How will you determine interaction points? Micro-array or sequencing? ")
+				if typeproDNA.lower() == o.chip_on_chip.attributes["interaction points"]:
 					print("The type of experiment that you want to perform is ChIPonChip!")
-				elif typeproDNA.lower() == "chip sequencing":
+				elif typeproDNA.lower() == o.chip_sequencing.attributes["interaction points"]:
 					print("The type of experiment that you want to perform is Chip Sequencing!")
 			elif typeinteraction.lower() == "rna":
 				typeproRNA = input("What type of protein RNA sequencing are you trying to do? Fret, TCP Sequencing, or Toe printing assay? ")
