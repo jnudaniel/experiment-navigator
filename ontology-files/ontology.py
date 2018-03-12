@@ -165,6 +165,7 @@ class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes = {"immunoprecipitation":True, "interaction points":""}
 
 class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 
@@ -318,6 +319,7 @@ class ChIPonChip(ProteinDNAInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes["interaction points"] = "micro-array"
 
 class ChipSequencing(ProteinDNAInteractionExperiment):
 
@@ -326,6 +328,7 @@ class ChipSequencing(ProteinDNAInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes["interaction points"] = "sequencing"
 
 class FRET(ProteinRNAInteractionExperiment):
 
