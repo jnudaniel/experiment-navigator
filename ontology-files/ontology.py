@@ -118,6 +118,19 @@ class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
 		self.name = name
 		self.subtypes = subtypes
 
+# defining kinds of detection experiments
+class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
+
+	def __init__(self, name = "NonspecificProteinDetectionExperiment", subtypes = []):
+		self.name = name
+		self.subtypes
+
+class SpecificProteinDetectionExperiment(ProteinDetectionExperiment):
+
+	def __init__(self, name = "SpecificProteinDetectionExperiment", subtypes = []):
+		self.name = name
+		self.subtypes = subtypes
+
 #####################################################################################################
 ##### Define 5th level experiments #####
 
@@ -129,6 +142,81 @@ class XRayCrystalography(ProteinStructureExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+# defining terminal nonspecific protein detection experiments
+class Absorbance(NonspecificProteinDetectionExperiment):
+
+	def __init__(self, name = "Absorbance", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class AmidoBlack(NonspecificProteinDetectionExperiment):
+
+	def __init__(self, name = "AmidoBlack", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class BCAAssay(NonspecificProteinDetectionExperiment):
+
+	def __init__(self, name = "BCAAssay", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class BradfordAssay(NonspecificProteinDetectionExperiment):
+
+	def __init__(self, name = "BradfordAssay", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class LowryAssay(NonspecificProteinDetectionExperiment):
+
+	def __init__(self, name = "LowryAssay", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+# defining terminal specific detection experiments
+class ELISA(SpecificProteinDetectionExperiment):
+
+	def __init__(self, name = "ELISA", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class HPLC(SpecificProteinDetectionExperiment):
+
+	def __init__(self, name = "HPLC", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class LCMS(SpecificProteinDetectionExperiment):
+
+	def __init__(self, name = "LCMS", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
+class WesternBlot(SpecificProteinDetectionExperiment):
+
+	def __init__(self, name = "WesternBlot", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+		self.name = name
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
+
 
 ######################################################################################################
 
@@ -142,6 +230,20 @@ def build_ontology():
 	# adding protein structure objects
 	XrayCrystal = XRayCrystalography("https://en.wikibooks.org/wiki/Structural_Biochemistry/Proteins/X-ray_Crystallography")
 	PSE = ProteinStructureExperiment(subtypes = [XrayCrystal], description = "Experiment to determine a protein's structure.")
+
+	# adding protein detection objects
+	absorbance = Absorbance()
+	amido_black = AmidoBlack()
+	bca_assay = BCAAssay()
+	bradford_assay = BradfordAssay()
+	lowry_assay = LowryAssay()
+	NPDE = NonspecificProteinDetectionExperiment(subtypes = [absorbance, amido_black, bca_assay, bradford_assay, lowry_assay], description = "Nonspecific ways of detecting a protein.")
+	elisa = ELISA()
+	hplc = HPLC()
+	lcms = LCMS()
+	western_blot = WesternBlot()
+	SPDE = SpecificProteinDetectionExperiment(subtypes = [elisa, hplc, lcms, western_blot], description = "Specific protein assays and detection.")
+	PDE = ProteinDetectionExperiment(subtypes = [NPDE, SPDE], description = "experiemnts to detect proteins")
 
 	# declaring experiment sub-types
 	GE = GeneExperiment()#subtypes = [])#, description = "Experiment that revolves around jeans")
