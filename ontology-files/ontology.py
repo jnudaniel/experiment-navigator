@@ -36,9 +36,13 @@ class Experiment:
 		self.name = name
 		self.experiment_type = experiment_type
 		self.description = description
+		self.attributes = {}
 
 	def set_description(self, new_description):
 		self.description = new_description
+
+	def set_attributes(self, attributes):
+		self.attributes = attributes
 
 ############################################################################################################
 ## Define 2nd level experiments ##
@@ -76,6 +80,8 @@ class ProteinLocationExperiment(ProteinExperiment):
 	def __init__(self, name = "ProteinExperiment", subtypes = ["StaticLocationExperiment", "DynamicLocatinExperiment"]):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 """" A 3rd level class to define finding the structure of a protein """
 class ProteinStructureExperiment(ProteinExperiment):
@@ -83,27 +89,35 @@ class ProteinStructureExperiment(ProteinExperiment):
 	def __init__(self, name = "ProteinStructureExperiment", subtypes = ["XRayCrystalography"], experiment_type = "ProteinExperiment", description=""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 """ A 3rd level class to define protein interaction experiments """
 class ProteinInteractionExperiment(ProteinExperiment):
 	
-	def __init__(self, name = "ProteinInteractionExperiment", subtypes = []):
+	def __init__(self, name = "ProteinInteractionExperiment", subtypes = [], experiment_type = "ProteinExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 """ A 3rd level class to define quantificaiton of protein """
 class ProteinQuantificationExperiment(ProteinExperiment):
 	
-	def __init__(self, name = "ProteinQuantificationExperiment", subtypes = []):
+	def __init__(self, name = "ProteinQuantificationExperiment", subtypes = [], experiment_type = "ProteinExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 """ A 3rd level class to define experiments to detect proteins """
 class ProteinDetectionExperiment(ProteinExperiment):
 	
-	def __init__(self, name = "ProteinDetectionExperiment", subtypes = []):
+	def __init__(self, name = "ProteinDetectionExperiment", subtypes = [], experiment_type = "ProteinExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 #####################################################################################################
 #### Define 4th level experiments ####
@@ -111,48 +125,62 @@ class ProteinDetectionExperiment(ProteinExperiment):
 """ A 4th level class to define the type of protein location experiment """
 class StaticProteinLocationExperiment(ProteinLocationExperiment):
 	
-	def __init__(self, name = "StaticProteinLocationExperiment", subtypes = []):
+	def __init__(self, name = "StaticProteinLocationExperiment", subtypes = [], experiment_type = "ProteinLocationExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 """ A 4th level class to define the type of protein location experiment """
 class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
 	
-	def __init__(self, name = "DynamicProteinLocatinExperiment", subtypes = []):
+	def __init__(self, name = "DynamicProteinLocatinExperiment", subtypes = [], experiment_type = "ProteinLocationExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 # defining kinds of detection experiments
 class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
 
-	def __init__(self, name = "NonspecificProteinDetectionExperiment", subtypes = []):
+	def __init__(self, name = "NonspecificProteinDetectionExperiment", subtypes = [], experiment_type = "ProteinDetectionExperiment", description = ""):
 		self.name = name
-		self.subtypes
+		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 class SpecificProteinDetectionExperiment(ProteinDetectionExperiment):
 
-	def __init__(self, name = "SpecificProteinDetectionExperiment", subtypes = []):
+	def __init__(self, name = "SpecificProteinDetectionExperiment", subtypes = [], experiment_type = "ProteinDetectionExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 # defining protein interaction experiment sub-classes
 class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
 
-	def __init__(self, name = "ProteinDNAInteractionExperiment", subtypes = []):
+	def __init__(self, name = "ProteinDNAInteractionExperiment", subtypes = [], experiment_type = "ProteinInteractionExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 
-	def __init__(self, name = "ProteinInteractionExperiment", subtypes = []):
+	def __init__(self, name = "ProteinInteractionExperiment", subtypes = [], experiment_type = "ProteinInteractionExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 
-	def __init__(self, name = "ProteinProteinInteractionExperiment", subtypes = []):
+	def __init__(self, name = "ProteinProteinInteractionExperiment", subtypes = [], experiment_type = "ProteinInteractionExperiment", description = ""):
 		self.name = name
 		self.subtypes = subtypes
+		self.description = description
+		self.experiment_type = experiment_type
 
 #####################################################################################################
 ##### Define 5th level experiments #####
@@ -160,28 +188,35 @@ class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 # defining protein location terminal experiments
 class FluorescenceResonanceEnergyTransfer(StaticProteinLocationExperiment):
 
-	def __init__(self, name = "FluorescenceResonanceEnergyTransfer", subtypes = None, description = "", experiment_type = "StaticProteinLocationExperiment"):
+	def __init__(self, name = "FluorescenceResonanceEnergyTransfer", subtypes = None, experiment_type = "StaticProteinLocationExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes = {"units":"nm", "tags":["fluorescence", "dye"]}
+		self.description = "FRET has been used to measure distance and detect molecular interactions in a number of systems and has applications in biology and chemistry. FRET can be used to measure distances between domains in a single protein and therefore to provide information about protein conformation. FRET can also detect interaction between proteins. Applied in vivo, FRET has been used to detect the location and interactions of genes and cellular structures including intergrins and membrane proteins. FRET can be used to obtain information about metabolic or signaling pathways. FRET is also used to study lipid rafts in cell membranes. FRET and BRET are also the common tools in the study of biochemical reaction kinetics and molecular motors. The applications of fluorescence resonance energy transfer (FRET) have expanded tremendously in the last 25 years, and the technique has become a staple technique in many biological and biophysical fields. FRET can be used as spectroscopic ruler in various areas such as structural elucidation of biological molecules and their interactions in vitro assays, in vivo monitoring in cellular research, nucleic acid analysis, signal transduction, light harvesting and metallic nanomaterial etc. Based on the mechanism of FRET a variety of novel chemical sensors and biosensors have been developed. <https://en.wikipedia.org/wiki/Forster_resonance_energy_transfer#Methods_to_measure_FRET_efficiency>"
 
 class TimeLapse(DynamicProteinLocatinExperiment):
 
-	def __init__(self, name = "DynamicProteinLocatinExperiment", subtypes = None, description = "", experiment_type = "DynamicProteinLocatinExperiment"):
+	def __init__(self, name = "TimeLapse", subtypes = None, experiment_type = "DynamicProteinLocatinExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes = {"units":["seconds", "nm"], "tags":["imaging", "dye", "fluorescence"]}
+		self.description = "https://en.wikipedia.org/wiki/Time-lapse_microscopy"
 
 """ A 5th level method to define experiment that identifies protein structure. This is a terminal node. """
 class XRayCrystalography(ProteinStructureExperiment):
 	
-	def __init__(self, name="XRayCrystalography", subtypes = None, description="", experiment_type="ProteinStructureExperiment"):
+	def __init__(self, name="XRayCrystalography", subtypes = None, experiment_type="ProteinStructureExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes = {"units":["nl", "kW", "angstroms"]}
+		self.description = "https://en.wikipedia.org/wiki/X-ray_crystallography"
+
 
 # defining terminal nonspecific protein detection experiments
 class Absorbance(NonspecificProteinDetectionExperiment):
@@ -194,27 +229,33 @@ class Absorbance(NonspecificProteinDetectionExperiment):
 
 class AmidoBlack(NonspecificProteinDetectionExperiment):
 
-	def __init__(self, name = "AmidoBlack", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+	def __init__(self, name = "AmidoBlack", subtypes = None, experiment_type = "NonspecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.description = "https://en.wikipedia.org/wiki/Amido_black_10B"
+		self.attributes = {"tags":["dye"]}
 
 class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
-	def __init__(self, name = "BCAAssay", subtypes = None, description = "", experiment_type = ["NonspecificProteinDetectionExperiment", "ProteinQuantificationExperiment"]):
+	def __init__(self, name = "BCAAssay", subtypes = None, experiment_type = ["NonspecificProteinDetectionExperiment", "ProteinQuantificationExperiment"]):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes = {"units":["ug/ml", "mg/ml", "Molar", "nm"], "minimum concentration":"0.5 ug/ml", "maximum concentration":"1.5 mg/ml", "reagents":["Bicinconinic acid", "NaCO3", "NaHCO3", "Sodium tartrate"], "tags":["dye"]}
+		self.description = "https://en.wikipedia.org/wiki/Bicinchoninic_acid_assay"
 
 class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
-	def __init__(self, name = "BradfordAssay", subtypes = None, description = "", experiment_type = ["NonspecificProteinDetectionExperiment", "ProteinQuantificationExperiment"]):
+	def __init__(self, name = "BradfordAssay", subtypes = None, experiment_type = ["NonspecificProteinDetectionExperiment", "ProteinQuantificationExperiment"]):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.description = "https://en.wikipedia.org/wiki/Bradford_protein_assay"
+		self.attributes = {"units":["ug/ml", "Molar", "nm"], "minimum concentration":"200 ug/ml", "maximum concentration":"1500 ug/ml", "reagent":"NaCl" ,"tags":["dye"]}
 
 class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -223,15 +264,18 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
+		self.attributes = {"reagents":["Folin–Ciocalteu", "Cu+", "Al"], "units":["ug/ml", "Molar", "nm"]}
 
 # defining terminal specific detection experiments
 class ELISA(SpecificProteinDetectionExperiment):
 
-	def __init__(self, name = "ELISA", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+	def __init__(self, name = "ELISA", subtypes = None, experiment_type = "SpecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.description = "https://en.wikipedia.org/wiki/ELISA"
 
 class HPLC(SpecificProteinDetectionExperiment):
 
