@@ -15,8 +15,8 @@ class ontology():
 	def __init__(self):
 		pass
 
-	def add_objects(self, objects):
-		self.objects = objects
+	def add_objects(self, root_class):
+		self.root_class = root_class
 
 	def set_substances(self, substances):
 		self.substances = substances
