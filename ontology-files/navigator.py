@@ -22,10 +22,10 @@ if __name__ == "__main__":
 	if molecule.lower() == "protein":
 		typeprotein = input("What do you want to learn about the protein? Please type one of the following: location, structure, interaction, quantification, detection. ")
 		if typeprotein.lower() == "location":
-			typelocation = input("Do you want the static or dynamic location of the protein? ")
-			if typelocation.lower() == "static":
+			typelocation = input("Will you be determining location over time or at one point in time? ")
+			if typelocation.lower() == "one point in time":
 				print("The type of experiment that you want to perform is Fluorescence Resonance Energy Transfer!")
-			elif typelocation.lower() == "dynamic":
+			elif typelocation.lower() == "over time":
 				print("The type of experiment that you want to perform is Time Lapse!")
 		elif typeprotein.lower() == "structure":
 			print("The type of experiment that you want to perform is XRay Crystalography!")
