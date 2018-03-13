@@ -218,7 +218,9 @@ class FluorescenceResonanceEnergyTransfer(StaticProteinLocationExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":"nm", "tags":["fluorescence", "dye"], "unit type": ["distance", "luminence"]}
+		self.attributes["units"] = ["nm"] 
+		self.attributes["tags"] = ["fluorescence", "dye"]
+		self.attributes["unit type"] = ["distance", "luminence"]
 		self.description = "https://en.wikipedia.org/wiki/Forster_resonance_energy_transfer"
 
 class TimeLapse(DynamicProteinLocatinExperiment):
@@ -227,7 +229,8 @@ class TimeLapse(DynamicProteinLocatinExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":["seconds", "nm"], "tags":["imaging", "dye", "fluorescence"]}
+		self.attributes["units"] = ["seconds", "nm"]
+		self.attributes["tags"] = ["imaging", "dye", "fluorescence"]
 		self.description = "https://en.wikipedia.org/wiki/Time-lapse_microscopy"
 
 """ A 5th level method to define experiment that identifies protein structure. This is a terminal node. """
@@ -237,7 +240,7 @@ class XRayCrystalography(ProteinStructureExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":["nl", "kW", "angstroms"]}
+		self.attributes["units"] = ["nl", "kw", "angstroms"]
 		self.description = "https://en.wikipedia.org/wiki/X-ray_crystallography"
 
 
@@ -258,7 +261,7 @@ class AmidoBlack(NonspecificProteinDetectionExperiment):
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Amido_black_10B"
-		self.attributes = {"tags":["dye"]}
+		self.attributes["tags"] = ["dye"]
 
 class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -266,7 +269,11 @@ class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExper
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":["ug/ml", "mg/ml", "Molar", "nm"], "minimum concentration":"0.5 ug/ml", "maximum concentration":"1.5 mg/ml", "reagents":["Bicinconinic acid", "NaCO3", "NaHCO3", "Sodium tartrate"], "tags":["dye"]}
+		self.attributes["units"] = ["ug/ml", "mg/ml", "Molar", "nm"]
+		self.attributes["minimum concentration"] = 0.5
+		self.attributes["maximum concentration"] = 1.5
+		self.attributes["reagents"] = ["Bicinconinic acid", "NaCO3", "NaHCO3", "Sodium tartrate"]
+		self.attributes["tags"] = ["dye"]
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 14.7
 		self.attributes["standard deviation"] = 0.15
@@ -280,7 +287,11 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Bradford_protein_assay"
-		self.attributes = {"units":["ug/ml", "Molar", "nm"], "minimum concentration":"200 ug/ml", "maximum concentration":"1500 ug/ml", "reagent":"NaCl" ,"tags":["dye"]}
+		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
+		self.attributes["minimum concentration"] = 200
+		self.attributes["maximum concentration"] = 1500
+		self.attributes["reagents"] = ["NaCl"]
+		self.attributes["tags"] = ["dye"]
 		self.attributes["relative uniformity"] = "low"
 		self.attributes["variation coefficient"] = 38.2
 		self.attributes["standard deviation"] = 0.26
@@ -293,7 +304,8 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
-		self.attributes = {"reagents":["folin-ciocalteu", "Cu+", "Al"], "units":["ug/ml", "Molar", "nm"]}
+		self.attributes["reagents"] = ["folin-ciocalteu", "Cu+", "Al"]
+		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 11.9
 		self.attributes["standard deviation"] = 0.13
