@@ -296,6 +296,7 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.attributes["variation coefficient"] = 38.2
 		self.attributes["standard deviation"] = 0.26
 		self.attributes["average ratio"] = 0.68
+		self.attributes["cost"] = 72
 
 class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -338,6 +339,7 @@ class HPLC(SpecificProteinDetectionExperiment):
 		self.attributes["unit_type"] = ["distance"]
 		self.attributes["minimum"] = 0
 		self.attributes["maximum"] = 250
+		self.attributes["cost"] = 352
 
 class LCMS(SpecificProteinDetectionExperiment):
 
@@ -350,6 +352,7 @@ class LCMS(SpecificProteinDetectionExperiment):
 		self.attributes["unit type"] = ["distance","mass"]
 		self.attributes["minimum distance"] = 0
 		self.attributes["maximum distance"] = 250
+		self.attributes["cost"] = 382
 
 class WesternBlot(SpecificProteinDetectionExperiment):
 
@@ -359,8 +362,9 @@ class WesternBlot(SpecificProteinDetectionExperiment):
 		self.description = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3456489/"
 		self.experiment_type = experiment_type
 		self.attributes["unit type"] = ["concentration", "distance", "mass"]
-		self.attributes["units"] = ["m","mm", "mg"]
+		self.attributes["units"] = ["m","mm", "mg", "ug/ml"]
 		self.attributes["reagents"] = ["antibody", "nacl", "kcl", "base", "acid", "h2o"]
+		self.attributes["cost"] = 160
 
 # defining terminal protein quantification experiments
 class UVAbsorbance(ProteinQuantificationExperiment):
