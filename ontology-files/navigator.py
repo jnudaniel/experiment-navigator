@@ -95,10 +95,13 @@ if __name__ == "__main__":
 				typeunit = input("What type of unit are you looking for output? ")
 				if typeunit.lower() == "concentration":
 					#narrowed down to ELISA and WESTERNBLOT
+					pass
 				if typeunit.lower() == "mass":
 					#narrowed down to LCMS and WesternBlot
+					pass
 				if typeunit.lower() == "distance":
 					#narrowed down to WesternBlot and HPLC
+					pass
 				# if typespec.lower() == "elisa":
 				# 	print("The type of experiment that you want to perform is ELISA!")
 				# elif typespec.lower() == "hplc":
@@ -108,6 +111,7 @@ if __name__ == "__main__":
 				# elif typespec.lower() == "western blot":
 				# 	print("The type of experiment that you want to perform is Western Blot!")
 			elif typedet.lower() == "nonspecific":
+				pass
 				# typenonspec = input("What type of nonspecific protein detection are you trying to do? Absorbance, Amido black, BCA assay, Bradford assay, Lowry assay? ")
 				# #Absorbance, Amido black, BCA assay, Bradford assay, Lowry assay")
 				# if typenonspec.lower() == "absorbance":
