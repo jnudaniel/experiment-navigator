@@ -16,16 +16,16 @@ if __name__ == "__main__":
 	print("The Experiment Navigator is your tool to help find the right experiment for you, given a hypothesis you'd like to test.")
 	print("Please enter your hypothesis here, in your own words:")
 	hypothesis = input(" > ")
-	print(hypothesis)
+	# print(hypothesis)
 	print("Great! In order to determine which experiment(s) you should conduct to test this hypothesis, we need to know more about the substances and information involved.")
 	molecule = input("What type of molecule are you working with? ")
 	if molecule.lower() == "protein":
 		typeprotein = input("What do you want to learn about the protein? Please type one of the following: location, structure, interaction, quantification, detection. ")
 		if typeprotein.lower() == "location":
-			typelocation = input("What type of location are you trying to learn? Static or dynamic? ")
-			if typelocation.lower() == "static":
+			typelocation = input("Will you be determining location over time or at one point in time? ")
+			if typelocation.lower() == "one point in time":
 				print("The type of experiment that you want to perform is Fluorescence Resonance Energy Transfer!")
-			elif typelocation.lower() == "dynamic":
+			elif typelocation.lower() == "over time":
 				print("The type of experiment that you want to perform is Time Lapse!")
 		elif typeprotein.lower() == "structure":
 			print("The type of experiment that you want to perform is XRay Crystalography!")
@@ -33,9 +33,9 @@ if __name__ == "__main__":
 			typeinteraction = input("What type of molecule is the protein interacting with? DNA, RNA, or another protein? ")
 			if typeinteraction.lower() == "dna":
 				typeproDNA = input("How will you determine interaction points? Micro-array or sequencing? ")
-				if typeproDNA.lower() == o.chip_on_chip.attributes["interaction points"]:
-					print("The type of experiment that you want to perform is ChIPonChip!")
-				elif typeproDNA.lower() == o.chip_sequencing.attributes["interaction points"]:
+				if typeproDNA.lower() == o.ChIPonChip.attributes["interaction points"]:
+					print("The type of experiment that you want to perform is Chip on Chip!")
+				elif typeproDNA.lower() == o.ChIPonChip.attributes["interaction points"]:
 					print("The type of experiment that you want to perform is Chip Sequencing!")
 			elif typeinteraction.lower() == "rna":
 				typeproRNA = input("What type of protein RNA sequencing are you trying to do? Fret, TCP Sequencing, or Toe printing assay? ")
@@ -91,8 +91,14 @@ if __name__ == "__main__":
 					print("The type of experiment that you want to perform is Bradford assay!")
 				elif typenonspec.lower() == "lowry assay":
 					print("The type of experiment that you want to perform is Lowry assay!")
+	elif molecule.lower() == "rna":
+		print("We don't have much information on experiments of that molecule. We can only tell that the experiment is an RNA Experiment.")
+	elif molecule.lower() == "dna":
+		print("We don't have much information on experiments of that molecule. We can only tell that the experiment is a DNA Experiment.")
+	elif molecule.lower() == "gene":
+		print("We don't have much information on experiments of that molecule. We can only tell that the experiment is a Gene Experiment.")		
 	else:
-		print("Sorry! We don't have much information on experiments of that molecule.")
+		print("Sorry! We don't have any information on experiments of that molecule.")
 	# print ont
 
 	# for substance in ont.substances:
