@@ -422,6 +422,7 @@ class AffinitiyChromatography(ProteinProteinInteractionExperiment):
 		self.attributes["reagents"] = ["antigen", "antibody", "enzyme", "substrate"]
 		self.attributes["tags"] = ["purification", "separation"]
 		self.attributes["unit type"] = ["distance"]
+		self.attributes["concept"].append("affinity")
 
 class AffinityElectrophoresis(ProteinProteinInteractionExperiment):
 
@@ -434,6 +435,7 @@ class AffinityElectrophoresis(ProteinProteinInteractionExperiment):
 		self.attributes["tags"] = ["gel"]
 		self.attributes["units"] = ["nm", "mm"]
 		self.attributes["reagents"] = ["buffer"]
+		self.attributes["concept"].append("affinity")
 
 class ProteinFragmentComplementationAssay(ProteinProteinInteractionExperiment):
 
@@ -445,6 +447,7 @@ class ProteinFragmentComplementationAssay(ProteinProteinInteractionExperiment):
 		self.attributes["unit type"] = ["luminence", "distance"]
 		self.attributes["units"] = ["nm"]
 		self.attributes["tags"] = ["bait", "prey", "reporter", "proteomics"]
+		self.attributes["concept"].append("complementation")
 
 
 ######################################################################################################
