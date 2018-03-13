@@ -9,4 +9,6 @@ To run:
 
 - run the python file
 
-- wow
+- OR: run `python navigator.py`
+
+- much wow, much learning
