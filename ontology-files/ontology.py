@@ -38,6 +38,9 @@ class Experiment:
 		self.description = description
 		self.attributes = {}
 
+	# member variable to contain attributes
+	attributes = {}
+
 	def set_description(self, new_description):
 		self.description = new_description
 
@@ -82,6 +85,8 @@ class ProteinLocationExperiment(ProteinExperiment):
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 
+	attributes = {"concept":"location", "unit type":"distance"}
+
 """" A 3rd level class to define finding the structure of a protein """
 class ProteinStructureExperiment(ProteinExperiment):
 	
@@ -90,6 +95,8 @@ class ProteinStructureExperiment(ProteinExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+	attributes = {"concept":"structure", "unit type":"distance"}
 
 """ A 3rd level class to define protein interaction experiments """
 class ProteinInteractionExperiment(ProteinExperiment):
@@ -100,6 +107,8 @@ class ProteinInteractionExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+		attributes = {"concept":"interaction", "unit type":"distance"}
+
 """ A 3rd level class to define quantificaiton of protein """
 class ProteinQuantificationExperiment(ProteinExperiment):
 	
@@ -109,6 +118,8 @@ class ProteinQuantificationExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+	attributes = {"concept":"quantity", "unit type":"concentration"}
+
 """ A 3rd level class to define experiments to detect proteins """
 class ProteinDetectionExperiment(ProteinExperiment):
 	
@@ -117,6 +128,8 @@ class ProteinDetectionExperiment(ProteinExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+	attributes = {"concept":"detection"}
 
 #####################################################################################################
 #### Define 4th level experiments ####
@@ -130,6 +143,8 @@ class StaticProteinLocationExperiment(ProteinLocationExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+	attributes = {"tags":"nonspecific", "concept":"location"}
+
 """ A 4th level class to define the type of protein location experiment """
 class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
 	
@@ -138,6 +153,8 @@ class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+	attributes = {"tags":"nonspecific", "concept":"location"}
 
 # defining kinds of detection experiments
 class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
@@ -148,6 +165,8 @@ class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+	attributes = {"tags":"nonspecific", "concept":"detection"}
+
 class SpecificProteinDetectionExperiment(ProteinDetectionExperiment):
 
 	def __init__(self, name = "SpecificProteinDetectionExperiment", subtypes = [], experiment_type = "ProteinDetectionExperiment", description = ""):
@@ -155,6 +174,8 @@ class SpecificProteinDetectionExperiment(ProteinDetectionExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+	attributes = {"tags":"specific", "concept":"detection"}
 
 # defining protein interaction experiment sub-classes
 class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
@@ -165,7 +186,7 @@ class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"immunoprecipitation":True, "interaction points":""}
+	attributes = {"immunoprecipitation":True, "interaction points":"", "concept":"interaction"}
 
 class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 
@@ -175,6 +196,8 @@ class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
+	attributes = {"concept":"interaction"}
+
 class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 
 	def __init__(self, name = "ProteinProteinInteractionExperiment", subtypes = [], experiment_type = "ProteinInteractionExperiment", description = ""):
@@ -182,6 +205,8 @@ class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+
+	attributes = {"concept":"interaction"}
 
 #####################################################################################################
 ##### Define 5th level experiments #####
@@ -219,11 +244,12 @@ class XRayCrystalography(ProteinStructureExperiment):
 # defining terminal nonspecific protein detection experiments
 class Absorbance(NonspecificProteinDetectionExperiment):
 
-	def __init__(self, name = "Absorbance", subtypes = None, description = "", experiment_type = "NonspecificProteinDetectionExperiment"):
+	def __init__(self, name = "Absorbance", subtypes = None, experiment_type = "NonspecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://www.thermofisher.com/us/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/overview-protein-assays.html"
 		self.experiment_type = experiment_type
+		self.attributes["units"] = ["nm"]
 
 class AmidoBlack(NonspecificProteinDetectionExperiment):
 
@@ -241,6 +267,10 @@ class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExper
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.attributes = {"units":["ug/ml", "mg/ml", "Molar", "nm"], "minimum concentration":"0.5 ug/ml", "maximum concentration":"1.5 mg/ml", "reagents":["Bicinconinic acid", "NaCO3", "NaHCO3", "Sodium tartrate"], "tags":["dye"]}
+		self.attributes["relative uniformity"] = "high"
+		self.attributes["variation coefficient"] = 14.7
+		self.attributes["standard deviation"] = 0.15
+		self.attributes["average ratio"] = 1.02
 		self.description = "https://en.wikipedia.org/wiki/Bicinchoninic_acid_assay"
 
 class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
@@ -251,6 +281,10 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Bradford_protein_assay"
 		self.attributes = {"units":["ug/ml", "Molar", "nm"], "minimum concentration":"200 ug/ml", "maximum concentration":"1500 ug/ml", "reagent":"NaCl" ,"tags":["dye"]}
+		self.attributes["relative uniformity"] = "low"
+		self.attributes["variation coefficient"] = 38.2
+		self.attributes["standard deviation"] = 0.26
+		self.attributes["average ratio"] = 0.68
 
 class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -260,6 +294,10 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
 		self.attributes = {"reagents":["folin-ciocalteu", "Cu+", "Al"], "units":["ug/ml", "Molar", "nm"]}
+		self.attributes["relative uniformity"] = "high"
+		self.attributes["variation coefficient"] = 11.9
+		self.attributes["standard deviation"] = 0.13
+		self.attributes["average ratio"] = 1.09
 
 # defining terminal specific detection experiments
 class ELISA(SpecificProteinDetectionExperiment):
@@ -268,31 +306,49 @@ class ELISA(SpecificProteinDetectionExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.description = "https://en.wikipedia.org/wiki/ELISA"
+		self.description = "https://www.thermofisher.com/us/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/overview-elisa.html"
+		self.attributes["subtypes"] = ["direct", "indirect", "capture"]
+		self.attributes["reagents"] = ["antibody"]
+		self.attributes["sensitivity"] = 5
+		self.attributes["units"] = ["pg/ml"]
+		self.attributes["minimum"] = 7.8
+		self.attributes["maximum"] = 500
+		self.attributes["unit type"]: "concentration"
 
 class HPLC(SpecificProteinDetectionExperiment):
 
-	def __init__(self, name = "HPLC", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+	def __init__(self, name = "HPLC", subtypes = None, experiment_type = "SpecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://www.chemguide.co.uk/analysis/chromatography/hplc.html"
 		self.experiment_type = experiment_type
+		self.attributes["units"] = ["mm"]
+		self.attributes["unit_type"]: "distance"
+		self.attributes["minimum"]: 0
+		self.attributes["maximum"]: 250
 
 class LCMS(SpecificProteinDetectionExperiment):
 
-	def __init__(self, name = "LCMS", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+	def __init__(self, name = "LCMS", subtypes = None, experiment_type = "SpecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/Liquid_chromatography-mass_spectrometry"
 		self.experiment_type = experiment_type
+		self.attributes["units"]:["mm", "nm"]
+		self.attributes["unit type"]:["distance","mass"]
+		self.attributes["minimum distance"]: 0
+		self.attributes["maximum distance"]: 250
 
 class WesternBlot(SpecificProteinDetectionExperiment):
 
-	def __init__(self, name = "WesternBlot", subtypes = None, description = "", experiment_type = "SpecificProteinDetectionExperiment"):
+	def __init__(self, name = "WesternBlot", subtypes = None, experiment_type = "SpecificProteinDetectionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3456489/"
 		self.experiment_type = experiment_type
+		self.attributes["unit type"]: ["concentration", "distance", "mass"]
+		self.attributes["units"]:["m","mm", "mg"]
+		self.attributes["reagents"]:["antibody", "nacl", "kcl", "base", "acid", "h2o"]
 
 # defining terminal protein quantification experiments
 class UVAbsorbance(ProteinQuantificationExperiment):
@@ -302,6 +358,8 @@ class UVAbsorbance(ProteinQuantificationExperiment):
 		self.subtypes = subtypes
 		self.description = description
 		self.experiment_type = experiment_type
+		self.attributes["wavelength"] = 280
+		self.attributes["units"] = ["nm"]
 
 # defining terminal protein interaction experiments
 class ChIPonChip(ProteinDNAInteractionExperiment):
@@ -324,23 +382,28 @@ class ChipSequencing(ProteinDNAInteractionExperiment):
 
 class FRET(ProteinRNAInteractionExperiment):
 
-	def __init__(self, name = "FRET", subtypes = None, description = "", experiment_type = ["ProteinRNAInteractionExperiment", "ProteinProteinInteractionExperiment"]):
+	def __init__(self, name = "FRET", subtypes = None, experiment_type = ["ProteinRNAInteractionExperiment", "ProteinProteinInteractionExperiment"]):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://www.biotek.com/resources/white-papers/an-introduction-to-fluorescence-resonance-energy-transfer-fret-technology-and-its-application-in-bioscience/"
 		self.experiment_type = experiment_type
+		self.attributes["units"]:["angstroms", "nm"]
+		self.attributes["unit type"]:["weight", "distance"]
+
 
 class TCPseq(ProteinRNAInteractionExperiment):
 
 	def __init__(self, name = "TCPseq", subtypes = None, description = "", experiment_type = "ProteinRNAInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/TCP-seq"
 		self.experiment_type = experiment_type
+		self.attributes["concept"]:"sequencing"
+		self.attributes["sensitivity"]: "high"
 
 class ToeprintingAssay(ProteinRNAInteractionExperiment):
 
-	def __init__(self, name = "ToeprintingAssay", subtypes = None, description = "", experiment_type = "ProteinRNAInteractionExperiment"):
+	def __init__(self, name = "ToeprintingAssay", subtypes = None, experiment_type = "ProteinRNAInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
 		self.description = description
