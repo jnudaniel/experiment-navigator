@@ -85,7 +85,7 @@ class ProteinLocationExperiment(ProteinExperiment):
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"location", "unit type":"distance"}
+	attributes = {"concept":["location"], "unit type":"distance"}
 
 """" A 3rd level class to define finding the structure of a protein """
 class ProteinStructureExperiment(ProteinExperiment):
@@ -96,7 +96,7 @@ class ProteinStructureExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"structure", "unit type":"distance"}
+	attributes = {"concept":["structure"], "unit type":"distance"}
 
 """ A 3rd level class to define protein interaction experiments """
 class ProteinInteractionExperiment(ProteinExperiment):
@@ -107,7 +107,7 @@ class ProteinInteractionExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-		attributes = {"concept":"interaction", "unit type":"distance"}
+		attributes = {"concept":["interaction"], "unit type":"distance"}
 
 """ A 3rd level class to define quantificaiton of protein """
 class ProteinQuantificationExperiment(ProteinExperiment):
@@ -118,7 +118,7 @@ class ProteinQuantificationExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"quantity", "unit type":"concentration"}
+	attributes = {"concept":["quantity"], "unit type":"concentration"}
 
 """ A 3rd level class to define experiments to detect proteins """
 class ProteinDetectionExperiment(ProteinExperiment):
@@ -129,7 +129,7 @@ class ProteinDetectionExperiment(ProteinExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"detection"}
+	attributes = {"concept":["detection"]}
 
 #####################################################################################################
 #### Define 4th level experiments ####
@@ -143,7 +143,7 @@ class StaticProteinLocationExperiment(ProteinLocationExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"tags":"nonspecific", "concept":"location"}
+	attributes = {"tags":"nonspecific", "concept":["location"]}
 
 """ A 4th level class to define the type of protein location experiment """
 class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
@@ -154,7 +154,7 @@ class DynamicProteinLocatinExperiment(ProteinLocationExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"tags":"nonspecific", "concept":"location"}
+	attributes = {"tags":"nonspecific", "concept":["location"]}
 
 # defining kinds of detection experiments
 class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
@@ -165,7 +165,7 @@ class NonspecificProteinDetectionExperiment(ProteinDetectionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"tags":"nonspecific", "concept":"detection"}
+	attributes = {"tags":"nonspecific", "concept":["detection"]}
 
 class SpecificProteinDetectionExperiment(ProteinDetectionExperiment):
 
@@ -186,7 +186,7 @@ class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"immunoprecipitation":True, "interaction points":"", "concept":"interaction"}
+	attributes = {"immunoprecipitation":True, "interaction points":"", "concept":["interaction"]}
 
 class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 
@@ -196,7 +196,7 @@ class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"interaction"}
+	attributes = {"concept":["interaction"]}
 
 class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 
@@ -206,7 +206,7 @@ class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":"interaction"}
+	attributes = {"concept":["interaction"]}
 
 #####################################################################################################
 ##### Define 5th level experiments #####
@@ -297,6 +297,7 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.attributes["variation coefficient"] = 38.2
 		self.attributes["standard deviation"] = 0.26
 		self.attributes["average ratio"] = 0.68
+		self.attributes["cost"] = 72
 
 class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -340,6 +341,7 @@ class HPLC(SpecificProteinDetectionExperiment):
 		self.attributes["unit_type"] = ["distance"]
 		self.attributes["minimum"] = 0
 		self.attributes["maximum"] = 250
+		self.attributes["cost"] = 352
 
 class LCMS(SpecificProteinDetectionExperiment):
 
@@ -352,6 +354,7 @@ class LCMS(SpecificProteinDetectionExperiment):
 		self.attributes["unit type"] = ["distance","mass"]
 		self.attributes["minimum distance"] = 0
 		self.attributes["maximum distance"] = 250
+		self.attributes["cost"] = 382
 
 class WesternBlot(SpecificProteinDetectionExperiment):
 
@@ -361,8 +364,9 @@ class WesternBlot(SpecificProteinDetectionExperiment):
 		self.description = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3456489/"
 		self.experiment_type = experiment_type
 		self.attributes["unit type"] = ["concentration", "distance", "mass"]
-		self.attributes["units"] = ["m","mm", "mg"]
+		self.attributes["units"] = ["m","mm", "mg", "ug/ml"]
 		self.attributes["reagents"] = ["antibody", "nacl", "kcl", "base", "acid", "h2o"]
+		self.attributes["cost"] = 160
 
 # defining terminal protein quantification experiments
 class UVAbsorbance(ProteinQuantificationExperiment):
@@ -413,7 +417,7 @@ class TCPseq(ProteinRNAInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = "https://en.wikipedia.org/wiki/TCP-seq"
 		self.experiment_type = experiment_type
-		self.attributes["concept"] = "sequencing"
+		self.attributes["concept"] = ["sequencing"]
 		self.attributes["sensitivity"] = "high"
 
 class ToeprintingAssay(ProteinRNAInteractionExperiment):
