@@ -218,8 +218,8 @@ class FluorescenceResonanceEnergyTransfer(StaticProteinLocationExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":"nm", "tags":["fluorescence", "dye"]}
-		self.description = "FRET has been used to measure distance and detect molecular interactions in a number of systems and has applications in biology and chemistry. FRET can be used to measure distances between domains in a single protein and therefore to provide information about protein conformation. FRET can also detect interaction between proteins. Applied in vivo, FRET has been used to detect the location and interactions of genes and cellular structures including intergrins and membrane proteins. FRET can be used to obtain information about metabolic or signaling pathways. FRET is also used to study lipid rafts in cell membranes. FRET and BRET are also the common tools in the study of biochemical reaction kinetics and molecular motors. The applications of fluorescence resonance energy transfer (FRET) have expanded tremendously in the last 25 years, and the technique has become a staple technique in many biological and biophysical fields. FRET can be used as spectroscopic ruler in various areas such as structural elucidation of biological molecules and their interactions in vitro assays, in vivo monitoring in cellular research, nucleic acid analysis, signal transduction, light harvesting and metallic nanomaterial etc. Based on the mechanism of FRET a variety of novel chemical sensors and biosensors have been developed. <https://en.wikipedia.org/wiki/Forster_resonance_energy_transfer#Methods_to_measure_FRET_efficiency>"
+		self.attributes = {"units":"nm", "tags":["fluorescence", "dye"], "unit type": ["distance", "luminence"]}
+		self.description = "https://en.wikipedia.org/wiki/Forster_resonance_energy_transfer"
 
 class TimeLapse(DynamicProteinLocatinExperiment):
 
@@ -313,7 +313,7 @@ class ELISA(SpecificProteinDetectionExperiment):
 		self.attributes["units"] = ["pg/ml"]
 		self.attributes["minimum"] = 7.8
 		self.attributes["maximum"] = 500
-		self.attributes["unit type"]: "concentration"
+		self.attributes["unit type"] = ["concentration"]
 
 class HPLC(SpecificProteinDetectionExperiment):
 
@@ -323,9 +323,9 @@ class HPLC(SpecificProteinDetectionExperiment):
 		self.description = "https://www.chemguide.co.uk/analysis/chromatography/hplc.html"
 		self.experiment_type = experiment_type
 		self.attributes["units"] = ["mm"]
-		self.attributes["unit_type"]: "distance"
-		self.attributes["minimum"]: 0
-		self.attributes["maximum"]: 250
+		self.attributes["unit_type"] = ["distance"]
+		self.attributes["minimum"] = 0
+		self.attributes["maximum"] = 250
 
 class LCMS(SpecificProteinDetectionExperiment):
 
@@ -334,10 +334,10 @@ class LCMS(SpecificProteinDetectionExperiment):
 		self.subtypes = subtypes
 		self.description = "https://en.wikipedia.org/wiki/Liquid_chromatography-mass_spectrometry"
 		self.experiment_type = experiment_type
-		self.attributes["units"]:["mm", "nm"]
-		self.attributes["unit type"]:["distance","mass"]
-		self.attributes["minimum distance"]: 0
-		self.attributes["maximum distance"]: 250
+		self.attributes["units"] = ["mm", "nm"]
+		self.attributes["unit type"] = ["distance","mass"]
+		self.attributes["minimum distance"] = 0
+		self.attributes["maximum distance"] = 250
 
 class WesternBlot(SpecificProteinDetectionExperiment):
 
@@ -346,9 +346,9 @@ class WesternBlot(SpecificProteinDetectionExperiment):
 		self.subtypes = subtypes
 		self.description = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3456489/"
 		self.experiment_type = experiment_type
-		self.attributes["unit type"]: ["concentration", "distance", "mass"]
-		self.attributes["units"]:["m","mm", "mg"]
-		self.attributes["reagents"]:["antibody", "nacl", "kcl", "base", "acid", "h2o"]
+		self.attributes["unit type"] = ["concentration", "distance", "mass"]
+		self.attributes["units"] = ["m","mm", "mg"]
+		self.attributes["reagents"] = ["antibody", "nacl", "kcl", "base", "acid", "h2o"]
 
 # defining terminal protein quantification experiments
 class UVAbsorbance(ProteinQuantificationExperiment):
@@ -360,6 +360,7 @@ class UVAbsorbance(ProteinQuantificationExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["wavelength"] = 280
 		self.attributes["units"] = ["nm"]
+		self.attributes["unit type"] = ["luminence"]
 
 # defining terminal protein interaction experiments
 class ChIPonChip(ProteinDNAInteractionExperiment):
@@ -387,8 +388,8 @@ class FRET(ProteinRNAInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = "https://www.biotek.com/resources/white-papers/an-introduction-to-fluorescence-resonance-energy-transfer-fret-technology-and-its-application-in-bioscience/"
 		self.experiment_type = experiment_type
-		self.attributes["units"]:["angstroms", "nm"]
-		self.attributes["unit type"]:["weight", "distance"]
+		self.attributes["units"] = ["angstroms", "nm"]
+		self.attributes["unit type"] = ["weight", "distance"]
 
 
 class TCPseq(ProteinRNAInteractionExperiment):
@@ -398,40 +399,53 @@ class TCPseq(ProteinRNAInteractionExperiment):
 		self.subtypes = subtypes
 		self.description = "https://en.wikipedia.org/wiki/TCP-seq"
 		self.experiment_type = experiment_type
-		self.attributes["concept"]:"sequencing"
-		self.attributes["sensitivity"]: "high"
+		self.attributes["concept"] = "sequencing"
+		self.attributes["sensitivity"] = "high"
 
 class ToeprintingAssay(ProteinRNAInteractionExperiment):
 
 	def __init__(self, name = "ToeprintingAssay", subtypes = None, experiment_type = "ProteinRNAInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/Toeprinting_assay"
 		self.experiment_type = experiment_type
+		self.attributes["unit type"] = ["concentration"]
+		self.attributes["reagents"] = ["mrna", "ribosomes","dna primer","nucleotides","reverse transcriptase"]
 
 class AffinitiyChromatography(ProteinProteinInteractionExperiment):
 
-	def __init__(self, name = "AffinitiyChromatography", subtypes = None, description = "", experiment_type = "ProteinProteinInteractionExperiment"):
+	def __init__(self, name = "AffinitiyChromatography", subtypes = None, experiment_type = "ProteinProteinInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/Affinity_chromatography"
 		self.experiment_type = experiment_type
+		self.attributes["reagents"] = ["antigen", "antibody", "enzyme", "substrate"]
+		self.attributes["tags"] = ["purification", "separation"]
+		self.attributes["unit type"] = ["distance"]
 
 class AffinityElectrophoresis(ProteinProteinInteractionExperiment):
 
-	def __init__(self, name = "AffinityElectrophoresis", subtypes = None, description = "", experiment_type = "ProteinInteractionExperiment"):
+	def __init__(self, name = "AffinityElectrophoresis", subtypes = None, experiment_type = "ProteinInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/Affinity_electrophoresis"
 		self.experiment_type = experiment_type
+		self.attributes["unit type"] = "distance"
+		self.attributes["tags"] = ["gel"]
+		self.attributes["units"] = ["nm", "mm"]
+		self.attributes["reagents"] = ["buffer"]
 
 class ProteinFragmentComplementationAssay(ProteinProteinInteractionExperiment):
 
-	def __init__(self, name = "ProteinFragmentComplementationAssay", subtypes = None, description = "", experiment_type = "ProteinProteinInteractionExperiment"):
+	def __init__(self, name = "ProteinFragmentComplementationAssay", subtypes = None, experiment_type = "ProteinProteinInteractionExperiment"):
 		self.name = name
 		self.subtypes = subtypes
-		self.description = description
+		self.description = "https://en.wikipedia.org/wiki/Protein-fragment_complementation_assay"
 		self.experiment_type = experiment_type
+		self.attributes["unit type"] = ["luminence", "distance"]
+		self.attributes["units"] = ["nm"]
+		self.attributes["tags"] = ["bait", "prey", "reporter", "proteomics"]
+
 
 ######################################################################################################
 
