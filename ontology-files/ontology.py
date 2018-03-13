@@ -266,7 +266,7 @@ class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExper
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes = {"units":["ug/ml", "mg/ml", "Molar", "nm"], "minimum concentration":"0.5 ug/ml", "maximum concentration":"1.5 mg/ml", "reagents":["Bicinconinic acid", "NaCO3", "NaHCO3", "Sodium tartrate"], "tags":["dye"]}
+		self.attributes = {"units":["ug/ml", "mg/ml", "Molar", "nm"], "minimum concentration":"0.5 ug/ml", "maximum concentration":"1.5 mg/ml", "reagents":["bicinconinic acid", "naco3", "nahco3", "sodium tartrate"], "tags":["dye"]}
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 14.7
 		self.attributes["standard deviation"] = 0.15
@@ -293,7 +293,7 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
-		self.attributes = {"reagents":["folin-ciocalteu", "Cu+", "Al"], "units":["ug/ml", "Molar", "nm"]}
+		self.attributes = {"reagents":["folin-ciocalteu", "cu+", "al"], "units":["ug/ml", "Molar", "nm"]}
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 11.9
 		self.attributes["standard deviation"] = 0.13
