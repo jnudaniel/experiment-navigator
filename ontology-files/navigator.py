@@ -54,23 +54,21 @@ if __name__ == "__main__":
 					istoe = input("Are any of the reagants mrna, ribosomes, dna primer, nucleotides, reverse transcriptase? ")
 					if istoe.lower() == "yes":
 						print("The type of experiment that you want to perform is Toe printing assay!")
-			#~~~~~~NEED TO FINISH THIS~~~~~~~#
+			#DONE WITH PROTEINPROTEIN INTERACTION#
 			elif typeinteraction.lower() == "protein":
 				typedata = input("What type of unit are you looking for output?" )
 				if typedata.lower() == "luminence":
 					print("The type of experiment that you want to perform is Protein Fragment Complementation Assay!")
 				elif typedata.lower() == "distance":
-					#NEED TO ADD SOMETHING HERE
-					pass
+					reag = input("What reagants are you using? ")
+					if reag.lower() in o.AffinitiyChromatography.attributes["reagents"]:
+						print("The type of experiment that you want to perform is Affinity Chromatography!")
+					elif reag.lower() in o.AffinityElectrophoresis.attributes["reagents"]:
+						print("The type of experiment that you want to perform is Affinity Electrophoresis!")
+					elif reag.lower() in o.ProteinFragmentComplementationAssay.attributes["reagents"]:
+						print("The type of experiment that you want to perform is Protein Fragment Complementation Assay!")
 				else:
 					print("Hmmmm, we don't seem to have a protein protein interaction experiment that measures %s"%typedata.lower())
-				# typepropro = input("What type of protein protein experiment are you trying to do? Affinity chromatography, Affinity electrophoresis, PFCA, or Fret? ")
-				# elif typepropro.lower() == "affinity chromatography":
-				# 	print("The type of experiment that you want to perform is Affinity chromatography!")
-				# elif typepropro.lower() == "affinity electrophoresis":
-				# 	print("The type of experiment that you want to perform is Affinity electrophoresis!")
-				# elif typepropro.lower() == "pfca":
-				# 	print("The type of experiment that you want to perform is PFCA!")
 		elif typeprotein.lower() == "quantification":
 			lum = input("Are you looking to use luminence? ")
 			if lum.lower() == "yes":
@@ -80,50 +78,71 @@ if __name__ == "__main__":
 				if uniform.lower() == "high":
 					reag = input("What reagants are you using? ")
 					#NOT WORKING ~~ONCE THIS WORKS IT WILL BE DONE~~
-					print(o.LowryAssay.attributes["reagents"])
+					# print(o.LowryAssay.attributes["reagents"])
 					if reag.lower() in o.LowryAssay.attributes.get("reagents"):
 						print("The type of experiment that you want to perform is Lowry assay!")
-					if reag.lower() in o.BCAAssay.attributes.get("reagents"):
+					elif reag.lower() in o.BCAAssay.attributes.get("reagents"):
 						print("The type of experiment that you want to perform is BCA assay!")
+					else:
+						print("We don't have an experiment type in our ontology that fits your constraints. Sorry!")
 				elif uniform.lower() == "low":
 					print("The type of experiment that you want to perform is Bradford assay!")
 		elif typeprotein.lower() == "detection":
 			typedet = input("What type of protein detection are you trying to do? Specific or nonspecific? ")
+			#DONE WITH SPECIFIC DETECTION
 			if typedet.lower() == "specific":
 				# typespec = input("What type of specific protein detection are you trying to do? ELISA, HPLC, LCMS, or Western Blot? ")
 				#ELISA, HPLC, LCMS, or Western Blot
 				typeunit = input("What type of unit are you looking for output? ")
 				if typeunit.lower() == "concentration":
 					#narrowed down to ELISA and WESTERNBLOT
-					pass
+					unit = input("What units would you like to measure the concentration in? ")
+					# print(o.ELISA.attributes["units"])
+					# print(o.WesternBlot.attributes["units"])
+					if unit.lower() in o.ELISA.attributes["units"]:
+						print("The type of experiment that you want to perform is ELISA!")
+					elif unit.lower() in o.WesternBlot.attributes["units"]:
+						print("The type of experiment that you want to perform is Western Blot!")
+					else:
+						print("We don't have an experiment type in our ontology that fits your constraints. Sorry!")
 				if typeunit.lower() == "mass":
 					#narrowed down to LCMS and WesternBlot
-					pass
+					cost = input("What cost are you trying to stay under? ")
+					if int(cost)>382:
+						print("The type of experiment that you want to perform is LCMS!")
+					elif int(cost)>160:
+						print("The type of experiment that you want to perform is Western Blot!")
+					else:
+						print("We don't have an experiment type in our ontology that fits your constraints. Sorry!")
 				if typeunit.lower() == "distance":
 					#narrowed down to WesternBlot and HPLC
-					pass
-				# if typespec.lower() == "elisa":
-				# 	print("The type of experiment that you want to perform is ELISA!")
-				# elif typespec.lower() == "hplc":
-				# 	print("The type of experiment that you want to perform is HPLC!")
-				# elif typespec.lower() == "lcms":
-				# 	print("The type of experiment that you want to perform is LCMS!")
-				# elif typespec.lower() == "western blot":
-				# 	print("The type of experiment that you want to perform is Western Blot!")
+					cost = input("What cost are you trying to stay under? ")
+					if int(cost)>352:
+						print("The type of experiment that you want to perform is HPLC!")
+					elif int(cost)>160:
+						print("The type of experiment that you want to perform is Western Blot!")
+					else:
+						print("We don't have an experiment type in our ontology that fits your constraints. Sorry!")
+			#DONE WITH NONSPECIFIC DETECTION
 			elif typedet.lower() == "nonspecific":
-				pass
-				# typenonspec = input("What type of nonspecific protein detection are you trying to do? Absorbance, Amido black, BCA assay, Bradford assay, Lowry assay? ")
-				# #Absorbance, Amido black, BCA assay, Bradford assay, Lowry assay")
-				# if typenonspec.lower() == "absorbance":
-				# 	print("The type of experiment that you want to perform is Absorbance!")
-				# elif typenonspec.lower() == "amido black":
-				# 	print("The type of experiment that you want to perform is Amido Black!")
-				# elif typenonspec.lower() == "bca assay":
-				# 	print("The type of experiment that you want to perform is BCA assay!")
-				# elif typenonspec.lower() == "bradford assay":
-				# 	print("The type of experiment that you want to perform is Bradford assay!")
-				# elif typenonspec.lower() == "lowry assay":
-				# 	print("The type of experiment that you want to perform is Lowry assay!")
+				# pass
+				cost = input("What cost range are you operating in? ")
+				if cost.lower() == "low":
+					#narrowed down to Lowry and Absorbance
+					dye = input("Are you using dye? ")
+					if dye.lower() == "yes":
+						print("The type of experiment that you want to perform is Absorbance!")
+					elif dye.lower() == "no":
+						print("The type of experiment that you want to perform is Lowry assay!")
+				elif cost.lower() == "med":
+					#then narrowed to BCA and Bradford
+					uniform = input("Do you want high or low relative uniformity? ")
+					if uniform.lower() == "high":
+						print("The type of experiment that you want to perform is BCA assay!")
+					elif uniform.lower() == "low":
+						print("The type of experiment that you want to perform is Bradford assay!")
+				elif cost.lower() == "high":
+					print("The type of experiment that you want to perform is Amido Black!")
 	elif molecule.lower() == "rna":
 		print("We don't have much information on experiments of that molecule. We can only tell that the experiment is an RNA Experiment.")
 	elif molecule.lower() == "dna":
@@ -132,7 +151,3 @@ if __name__ == "__main__":
 		print("We don't have much information on experiments of that molecule. We can only tell that the experiment is a Gene Experiment.")		
 	else:
 		print("Sorry! We don't have any information on experiments of that molecule.")
-	# print ont
-
-	# for substance in ont.substances:
-	# 	print substance

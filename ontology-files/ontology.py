@@ -62,7 +62,6 @@ class ProteinExperiment(Experiment):
 	def __init__(self, name = "ProteinExperiment", subtypes = ["ProteinLocationExperiment", "ProteinStructureExperiment", "ProteinInteractionExperiment", "ProteinQuantificationExperiment", "ProteinDetectionExperiment"], description=""):
 		self.name = name
 
-	attributes["substance"] = "protein"
 
 """ A 2nd level class to define a DNA based experiment """
 class DNAExperiment(Experiment):
@@ -317,15 +316,12 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
-<<<<<<< HEAD
 		self.attributes = {"reagents":["folin-ciocalteu", "cu+", "al"], "units":["ug/ml", "Molar", "nm"]}
 		self.attributes["reagents"] = ["folin-ciocalteu", "cu+", "al"]
 		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
-=======
 		self.attributes["reagents"] = ["folin-ciocalteu", "Cu+", "Al"]
 		self.attributes["units"] = ["ug/ml", "molar", "nm"]
 		self.attributes["unit type"] = ["concentration", "distance"]
->>>>>>> dc895b645658759c331d81fd14eec44eeef1ff22
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 11.9
 		self.attributes["standard deviation"] = 0.13
