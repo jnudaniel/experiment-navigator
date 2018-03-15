@@ -31,15 +31,18 @@ class ontology():
 """ A primary class from which all other classes are derived, similar to owl:thing in Protege """
 class Experiment:
 
+	# member variable to contain attributes
+	attributes = {}
+	name = ""
+	experiment_type = ""
+	description = ""
+
 	def __init__(self, name="", experiment_type="", subtypes=[], description=""):
 		self.subtypes = subtypes
 		self.name = name
 		self.experiment_type = experiment_type
 		self.description = description
 		self.attributes = {}
-
-	# member variable to contain attributes
-	attributes = {}
 
 	def set_description(self, new_description):
 		self.description = new_description
