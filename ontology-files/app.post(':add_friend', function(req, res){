@@ -1,0 +1,36 @@
+	app.post('/add_friend', function(req, res){
+		split_params = req.url.split('?')
+		url = split_params[0]
+		split_params.splice(0, 1)
+		parameters_temp = split_params.join("?")
+		parameters = parameters_temp.split("&")
+		var parameters_dict = {};
+		for (i = 0; i < parameters.length; i++){
+			parameter = parameters[i]
+			var parameter_split = parameter.split("=")
+			key = parameter_split[0]
+			parameter_split.splice(0, 1)
+			parameters_dict[key] = parameter_split.join("=")
+		}
+		post_query = "INSERT INTO Users_to_Friends VALUES (\"" + decodeURIComponent(parameters_dict['username']) + "\",\"" + 
+		decodeURIComponent(parameters_dict['friend_username']) + "\")"
+		
+		connection.query(post_query, function (err, result, fields) {
+		    if(err) {
+				res.end(err.toString());
+			}
+			post_query_two = "INSERT INTO Users_to_Friends VALUES (\"" + decodeURIComponent(parameters_dict['friend_username']) + "\",\"" + decodeURIComponent(parameters_dict['username']) + "\")"
+		    connection.query(post_query_two, function (err, result, fields) {
+			    if(err) {
+					res.end(err.toString());
+				}
+			    res.statusCode = 200;
+
+			    res.end(req.url);
+			});
+		    res.statusCode = 200;
+		    res.end(req.url);
+  		});
+		
+
+	})

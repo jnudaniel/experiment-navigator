@@ -307,7 +307,7 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
 		self.attributes = {"reagents":["folin-ciocalteu", "cu+", "al"], "units":["ug/ml", "Molar", "nm"]}
-		self.attributes["reagents"] = ["folin-ciocalteu", "Cu+", "Al"]
+		self.attributes["reagents"] = ["folin-ciocalteu", "cu+", "al"]
 		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 11.9
