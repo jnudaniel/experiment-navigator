@@ -62,6 +62,8 @@ class ProteinExperiment(Experiment):
 	def __init__(self, name = "ProteinExperiment", subtypes = ["ProteinLocationExperiment", "ProteinStructureExperiment", "ProteinInteractionExperiment", "ProteinQuantificationExperiment", "ProteinDetectionExperiment"], description=""):
 		self.name = name
 
+	attributes["substance"] = "protein"
+
 """ A 2nd level class to define a DNA based experiment """
 class DNAExperiment(Experiment):
 
@@ -186,7 +188,7 @@ class ProteinDNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"immunoprecipitation":True, "interaction points":"", "concept":["interaction"]}
+	attributes = {"immunoprecipitation":True, "interaction points":"", "concept":["interaction"], "substance":["dna", "protein"]}
 
 class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 
@@ -196,7 +198,7 @@ class ProteinRNAInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":["interaction"]}
+	attributes = {"concept":["interaction"], "substance":["rna", "protein"]}
 
 class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 
@@ -206,7 +208,7 @@ class ProteinProteinInteractionExperiment(ProteinInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 
-	attributes = {"concept":["interaction"]}
+	attributes = {"concept":["interaction"], "substance":["protein"]}
 
 #####################################################################################################
 ##### Define 5th level experiments #####
@@ -222,6 +224,7 @@ class FluorescenceResonanceEnergyTransfer(StaticProteinLocationExperiment):
 		self.attributes["tags"] = ["fluorescence", "dye"]
 		self.attributes["unit type"] = ["distance", "luminence"]
 		self.description = "https://en.wikipedia.org/wiki/Forster_resonance_energy_transfer"
+		self.attributes["cost"] = ["low"]
 
 class TimeLapse(DynamicProteinLocatinExperiment):
 
@@ -232,6 +235,7 @@ class TimeLapse(DynamicProteinLocatinExperiment):
 		self.attributes["units"] = ["seconds", "nm"]
 		self.attributes["tags"] = ["imaging", "dye", "fluorescence"]
 		self.description = "https://en.wikipedia.org/wiki/Time-lapse_microscopy"
+		self.attributes["cost"] = ["low"]
 
 """ A 5th level method to define experiment that identifies protein structure. This is a terminal node. """
 class XRayCrystalography(ProteinStructureExperiment):
@@ -240,8 +244,10 @@ class XRayCrystalography(ProteinStructureExperiment):
 		self.name = name
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
-		self.attributes["units"] = ["nl", "kw", "angstroms"]
+		self.attributes["units"] = ["nl", "kw", "angstroms", "nm"]
+		self.attributes["unit type"] = ["distance", "power", "volume"]
 		self.description = "https://en.wikipedia.org/wiki/X-ray_crystallography"
+		self.attributes["cost"] = ["high"]
 
 
 # defining terminal nonspecific protein detection experiments
@@ -253,6 +259,8 @@ class Absorbance(NonspecificProteinDetectionExperiment):
 		self.description = "https://www.thermofisher.com/us/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/overview-protein-assays.html"
 		self.experiment_type = experiment_type
 		self.attributes["units"] = ["nm"]
+		self.attributes["unit type"] = ["distance", "wavelength", "luminence"]
+		self.attributes["cost"] = ["low"]
 
 class AmidoBlack(NonspecificProteinDetectionExperiment):
 
@@ -262,6 +270,7 @@ class AmidoBlack(NonspecificProteinDetectionExperiment):
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Amido_black_10B"
 		self.attributes["tags"] = ["dye"]
+		self.attributes["cost"] = ["high"]
 
 class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -280,6 +289,7 @@ class BCAAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExper
 		self.attributes["standard deviation"] = 0.15
 		self.attributes["average ratio"] = 1.02
 		self.description = "https://en.wikipedia.org/wiki/Bicinchoninic_acid_assay"
+		self.attributes["cost"] = [130, "med"]
 
 class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -289,6 +299,7 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Bradford_protein_assay"
 		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
+		self.attributes["unit type"] = ["concentration", "distance"]
 		self.attributes["minimum concentration"] = 200
 		self.attributes["maximum concentration"] = 1500
 		self.attributes["reagents"] = ["NaCl"]
@@ -297,7 +308,7 @@ class BradfordAssay(NonspecificProteinDetectionExperiment, ProteinQuantification
 		self.attributes["variation coefficient"] = 38.2
 		self.attributes["standard deviation"] = 0.26
 		self.attributes["average ratio"] = 0.68
-		self.attributes["cost"] = 72
+		self.attributes["cost"] = [72, "med"]
 
 class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExperiment):
 
@@ -306,13 +317,20 @@ class LowryAssay(NonspecificProteinDetectionExperiment, ProteinQuantificationExp
 		self.subtypes = subtypes
 		self.experiment_type = experiment_type
 		self.description = "https://en.wikipedia.org/wiki/Lowry_protein_assay"
+<<<<<<< HEAD
 		self.attributes = {"reagents":["folin-ciocalteu", "cu+", "al"], "units":["ug/ml", "Molar", "nm"]}
 		self.attributes["reagents"] = ["folin-ciocalteu", "cu+", "al"]
 		self.attributes["units"] = ["ug/ml", "Molar", "nm"]
+=======
+		self.attributes["reagents"] = ["folin-ciocalteu", "Cu+", "Al"]
+		self.attributes["units"] = ["ug/ml", "molar", "nm"]
+		self.attributes["unit type"] = ["concentration", "distance"]
+>>>>>>> dc895b645658759c331d81fd14eec44eeef1ff22
 		self.attributes["relative uniformity"] = "high"
 		self.attributes["variation coefficient"] = 11.9
 		self.attributes["standard deviation"] = 0.13
 		self.attributes["average ratio"] = 1.09
+		self.attributes["cost"] = [75, "low"]
 
 # defining terminal specific detection experiments
 class ELISA(SpecificProteinDetectionExperiment):
@@ -329,6 +347,7 @@ class ELISA(SpecificProteinDetectionExperiment):
 		self.attributes["minimum"] = 7.8
 		self.attributes["maximum"] = 500
 		self.attributes["unit type"] = ["concentration"]
+		self.attributes["cost"] = [195, "high"]
 
 class HPLC(SpecificProteinDetectionExperiment):
 
@@ -341,7 +360,7 @@ class HPLC(SpecificProteinDetectionExperiment):
 		self.attributes["unit_type"] = ["distance"]
 		self.attributes["minimum"] = 0
 		self.attributes["maximum"] = 250
-		self.attributes["cost"] = 352
+		self.attributes["cost"] = [352, "high"]
 
 class LCMS(SpecificProteinDetectionExperiment):
 
@@ -354,7 +373,7 @@ class LCMS(SpecificProteinDetectionExperiment):
 		self.attributes["unit type"] = ["distance","mass"]
 		self.attributes["minimum distance"] = 0
 		self.attributes["maximum distance"] = 250
-		self.attributes["cost"] = 382
+		self.attributes["cost"] = [382, "high"]
 
 class WesternBlot(SpecificProteinDetectionExperiment):
 
@@ -366,7 +385,7 @@ class WesternBlot(SpecificProteinDetectionExperiment):
 		self.attributes["unit type"] = ["concentration", "distance", "mass"]
 		self.attributes["units"] = ["m","mm", "mg", "ug/ml"]
 		self.attributes["reagents"] = ["antibody", "nacl", "kcl", "base", "acid", "h2o"]
-		self.attributes["cost"] = 160
+		self.attributes["cost"] = [160, "med"]
 
 # defining terminal protein quantification experiments
 class UVAbsorbance(ProteinQuantificationExperiment):
@@ -378,7 +397,8 @@ class UVAbsorbance(ProteinQuantificationExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["wavelength"] = 280
 		self.attributes["units"] = ["nm"]
-		self.attributes["unit type"] = ["luminence"]
+		self.attributes["unit type"] = ["luminence", "distance"]
+		self.attributes["cost"] = ["low"]
 
 # defining terminal protein interaction experiments
 class ChIPonChip(ProteinDNAInteractionExperiment):
@@ -389,6 +409,7 @@ class ChIPonChip(ProteinDNAInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 		self.attributes["interaction points"] = "micro-array"
+		self.attributes["cost"] = [150, "med"]
 
 class ChipSequencing(ProteinDNAInteractionExperiment):
 
@@ -398,6 +419,7 @@ class ChipSequencing(ProteinDNAInteractionExperiment):
 		self.description = description
 		self.experiment_type = experiment_type
 		self.attributes["interaction points"] = "sequencing"
+		self.attributes["cost"] = [800, "high"]
 
 class FRET(ProteinRNAInteractionExperiment):
 
@@ -408,6 +430,7 @@ class FRET(ProteinRNAInteractionExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["units"] = ["angstroms", "nm"]
 		self.attributes["unit type"] = ["weight", "distance"]
+		self.attributes["cost"] = ["low"]
 
 
 class TCPseq(ProteinRNAInteractionExperiment):
@@ -419,6 +442,9 @@ class TCPseq(ProteinRNAInteractionExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["concept"] = ["sequencing"]
 		self.attributes["sensitivity"] = "high"
+		self.attributes["cost"] = "high"
+		self.attributes["units"] = ["bp", "aa"]
+		self.attributes["unit type"] = ["base pairs", "amino acids"]
 
 class ToeprintingAssay(ProteinRNAInteractionExperiment):
 
@@ -429,6 +455,7 @@ class ToeprintingAssay(ProteinRNAInteractionExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["unit type"] = ["concentration"]
 		self.attributes["reagents"] = ["mrna", "ribosomes","dna primer","nucleotides","reverse transcriptase"]
+		self.attributes["cost"] = [800, "high"]
 
 class AffinitiyChromatography(ProteinProteinInteractionExperiment):
 
@@ -441,6 +468,7 @@ class AffinitiyChromatography(ProteinProteinInteractionExperiment):
 		self.attributes["tags"] = ["purification", "separation"]
 		self.attributes["unit type"] = ["distance"]
 		self.attributes["concept"].append("affinity")
+		self.attributes["cost"] = ["low"]
 
 class AffinityElectrophoresis(ProteinProteinInteractionExperiment):
 
@@ -454,6 +482,7 @@ class AffinityElectrophoresis(ProteinProteinInteractionExperiment):
 		self.attributes["units"] = ["nm", "mm"]
 		self.attributes["reagents"] = ["buffer"]
 		self.attributes["concept"].append("affinity")
+		self.attributes["cost"] = "med"
 
 class ProteinFragmentComplementationAssay(ProteinProteinInteractionExperiment):
 
@@ -464,8 +493,10 @@ class ProteinFragmentComplementationAssay(ProteinProteinInteractionExperiment):
 		self.experiment_type = experiment_type
 		self.attributes["unit type"] = ["luminence", "distance"]
 		self.attributes["units"] = ["nm"]
-		self.attributes["tags"] = ["bait", "prey", "reporter", "proteomics"]
+		self.attributes["reagents"] = ["bait", "prey", "reporter"]
 		self.attributes["concept"].append("complementation")
+		self.attributes["cost"] = ["high"]
+		self.attributes["tags"] = ["proteomics"]
 
 
 ######################################################################################################
