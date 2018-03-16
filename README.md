@@ -12,3 +12,6 @@ To run:
 - OR: run `python navigator.py`
 
 - much wow, much learning
+
+
+![Final poster, presented on 3/15/18](https://github.com/jnudaniel/experiment-navigator/blob/master/BMI%20210%20Poster.png)
